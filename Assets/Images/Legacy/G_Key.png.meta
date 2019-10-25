@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 079f1fc3714c8e84b8670c0bf6047c6e
+guid: c5bd06a6248fb814ba8d2fba7ed7d036
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: 21300000
-    second: G_Lock_0
+    second: G_Key_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -61,9 +61,9 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 64
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -72,9 +72,10 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 64
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -83,25 +84,26 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: G_Lock_0
+      name: G_Key_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 6
-        width: 36
-        height: 36
+        x: 8
+        y: 8
+        width: 33
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 312ce2d73d0d3374e96848cd018cb85a
+      spriteID: dd220050e9851c34aaf75896907b01ba
       internalID: 21300000
       vertices: []
       indices: 
@@ -110,7 +112,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ecbbe410f8028304dac274258ad1c19c
+    spriteID: 0ccce150773d3a2499642220af6f1f5a
     internalID: 0
     vertices: []
     indices: 

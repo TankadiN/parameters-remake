@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 43771488ee2214b4b97d03e23678c93e
+guid: 079f1fc3714c8e84b8670c0bf6047c6e
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: 21300000
-    second: S_Lock_0
+    second: G_Lock_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -61,7 +61,7 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 64
     resizeAlgorithm: 0
@@ -72,7 +72,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 64
     resizeAlgorithm: 0
@@ -83,11 +84,12 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: S_Lock_0
+      name: G_Lock_0
       rect:
         serializedVersion: 2
         x: 6
@@ -101,7 +103,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42f58ff8571041543b12775afb5d2a36
+      spriteID: 312ce2d73d0d3374e96848cd018cb85a
       internalID: 21300000
       vertices: []
       indices: 
@@ -110,7 +112,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1ab9ae7836b5d6343aa337459d994512
+    spriteID: ecbbe410f8028304dac274258ad1c19c
     internalID: 0
     vertices: []
     indices: 

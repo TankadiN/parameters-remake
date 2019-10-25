@@ -1,10 +1,12 @@
 fileFormatVersion: 2
-guid: 03f1cdd6f2683ad4f8caf67602b03e44
+guid: bbfb4d1da52419a418f405154de50add
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Sword_0
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: S_Key_0
   externalObjects: {}
-  serializedVersion: 9
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -32,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -59,7 +61,7 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 64
     resizeAlgorithm: 0
@@ -70,7 +72,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 64
     resizeAlgorithm: 0
@@ -81,25 +84,27 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sword_0
+      name: S_Key_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 6
-        width: 36
-        height: 36
+        x: 8
+        y: 8
+        width: 33
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2733119e29f1bc429ad343dd73caced
+      spriteID: e2eac8b346e2f5944806c75791891a79
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -107,11 +112,13 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 87ff7779b8601ee47b47234409a40f3a
+    spriteID: 2a6c3e4d95509964f95a679703dc8431
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
