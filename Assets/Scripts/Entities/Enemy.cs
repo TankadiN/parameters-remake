@@ -91,6 +91,7 @@ public class Enemy : MonoBehaviour
             float PLAYER_ATTACK = Mathf.Round(PLR.CurrentAttack / 2);
             CurrentHealth -= PLAYER_ATTACK;
             OL.AddLog("<color=#FF00FF>Attack! - " + PLAYER_ATTACK + " damage to the enemy!</color>");
+            PLR.AddCOMBO();
             float DEF_Multiplier = Mathf.Round(PLR.CurrentDefense / 2);
             float ENEMY_ATTACK = EnemyAttack - DEF_Multiplier;
             PLR.CurrentHealth -= ENEMY_ATTACK;

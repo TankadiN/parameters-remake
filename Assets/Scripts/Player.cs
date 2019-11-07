@@ -33,6 +33,12 @@ public class Player : MonoBehaviour
     public TMP_Text EnergyTextGameobject;
     public float MaxEnergy;
     public float CurrentEnergy;
+    [Header("Combo")]
+    public Image ComboImageGameobject;
+    public TMP_Text ComboTextGameobject;
+    public float CurrentCombo;
+    public float MaxComboTimer;
+    public float CurrentComboTimer;
     [Header("Recovery")]
     public Image RecoveryImageGameobject;
     public TMP_Text RecoveryTextGameobject;
@@ -68,6 +74,7 @@ public class Player : MonoBehaviour
         float calcEXP = CurrentExperience / NeededExperience;
         float calcHP = CurrentHealth / MaxHealth;
         float calcEN = CurrentEnergy / MaxEnergy;
+        float calcCOMBO = CurrentComboTimer / MaxComboTimer;
         float calcRCV = CurrentRecovery / MaxRecovery;
         float calcATK = CurrentAttack / MaxAttack;
         float calcDEF = CurrentDefense / MaxDefense;
@@ -77,6 +84,7 @@ public class Player : MonoBehaviour
         ExperienceImageGameobject.fillAmount = calcEXP;
         HealthImageGameobject.fillAmount = calcHP;
         EnergyImageGameobject.fillAmount = calcEN;
+        ComboImageGameobject.fillAmount = calcCOMBO;
         RecoveryImageGameobject.fillAmount = calcRCV;
         AttackImageGameobject.fillAmount = calcATK;
         DefenseImageGameobject.fillAmount = calcDEF;
@@ -85,6 +93,7 @@ public class Player : MonoBehaviour
         ExperienceTextGameobject.text = CurrentExperience.ToString("0") + "/" + NeededExperience.ToString("0");
         HealthTextGameobject.text = CurrentHealth.ToString("0") + "/" + MaxHealth.ToString("0");
         EnergyTextGameobject.text = CurrentEnergy.ToString("0") + "/" + MaxEnergy.ToString("0");
+        ComboTextGameobject.text = "x" + CurrentCombo.ToString("0");
         RecoveryTextGameobject.text = CurrentRecovery.ToString("0");
         AttackTextGameobject.text = CurrentAttack.ToString("0") + "/" + MaxAttack.ToString("0");
         DefenseTextGameobject.text = CurrentDefense.ToString("0") + "/" + MaxDefense.ToString("0");
@@ -92,7 +101,7 @@ public class Player : MonoBehaviour
         SKeysTextGameobject.text = SilverKeys.ToString("0");
         GKeysTextGameobject.text = GoldenKeys.ToString("0");
         UPointsTextGameobject.text = "+" + UpgradePoints.ToString("0");
-        //Filling over time
+        //Time Related code
         if(CurrentEnergy <= MaxEnergy)
         {
             CurrentEnergy += Time.deltaTime * RCV_Multiplier;
@@ -108,6 +117,10 @@ public class Player : MonoBehaviour
         if (CurrentDefense <= MaxDefense)
         {
             CurrentDefense += Time.deltaTime;
+        }
+        if(CurrentComboTimer >= 0)
+        {
+            CurrentComboTimer -= Time.deltaTime;
         }
         //Overflow restoring
         if (CurrentEnergy > MaxEnergy)
@@ -138,7 +151,12 @@ public class Player : MonoBehaviour
             CurrentHealth = MaxHealth;
             CurrentEnergy = MaxEnergy;
         }
-        if(CurrentHealth < 0)
+        if (CurrentComboTimer <= 0)
+        {
+            CurrentCombo = 0;
+            CurrentComboTimer = 0;
+        }
+        if (CurrentHealth < 0)
         {
             CurrentHealth = 0;
             CurrentAttack = 0;
@@ -198,4 +216,9 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void AddCOMBO()
+    {
+        CurrentCombo++;
+        CurrentComboTimer = MaxComboTimer;
+    }
 }

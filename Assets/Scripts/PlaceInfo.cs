@@ -1,9 +1,10 @@
 ﻿using System;
+using UnityEngine;
 
 [Serializable]
 public class PlaceInfo
 {
-    public float rectX, rectY, rectWidth, rectHeight;
+    public Rect rect;
 
     public enum Type {Place, Enemy, Shop, Jackpot}
     public Type PlaceType;

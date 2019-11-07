@@ -93,6 +93,7 @@ public class Place : MonoBehaviour
                         }
                     }
                     PLR.CurrentEnergy -= EnergyNeeded;
+                    PLR.AddCOMBO();
                 }
                 else
                 {
