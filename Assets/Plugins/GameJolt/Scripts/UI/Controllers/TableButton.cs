@@ -1,10 +1,11 @@
 ﻿using GameJolt.API.Objects;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace GameJolt.UI.Controllers {
 	public class TableButton : MonoBehaviour {
-		public Text Title;
+		public TMP_Text Title;
 		public Image BackgroundImage;
 		public Color DefaultBackgroundColour = Color.grey;
 		public Color ActiveBackgroundColour = Color.green;

@@ -2,11 +2,12 @@
 using GameJolt.API;
 using GameJolt.API.Objects;
 using UnityEngine.UI;
+using TMPro;
 
 namespace GameJolt.UI.Controllers {
 	public class ScoreItem : MonoBehaviour {
-		public Text Username;
-		public Text Value;
+		public TMP_Text Username;
+		public TMP_Text Value;
 
 		public Color DefaultColour = Color.white;
 		public Color HighlightColour = Color.green;

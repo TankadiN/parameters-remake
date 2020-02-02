@@ -31,21 +31,27 @@ public class GamejoltHandler : MonoBehaviour
 
     public void UnlockTrophy(int trophyID)
     {
-        GameJolt.API.Trophies.Unlock(trophyID, (bool success) => {
-            if (success)
+        Trophies.TryUnlock(trophyID, (TryUnlockResult success) => {
+            if (success == TryUnlockResult.Unlocked)
             {
                 Debug.Log("Success!");
+                GameJoltUI.Instance.QueueNotification("You got a trophy!");
             }
-            else
+            if(success == TryUnlockResult.AlreadyUnlocked)
+            {
+                Debug.Log("Trophy Already Unlocked, Notning Changed");
+            }
+            if(success == TryUnlockResult.Failure)
             {
                 Debug.Log("Something went wrong");
+                GameJoltUI.Instance.QueueNotification("An error has occured trying to award you a trophy.");
             }
         });
     }
 
     public void AddScore(int scoreValue, string scoreText, int tableID, string extraData)
     {
-        GameJolt.API.Scores.Add(scoreValue, scoreText, tableID, extraData, (bool success) => 
+        Scores.Add(scoreValue, scoreText, tableID, extraData, (bool success) => 
         {
             Debug.Log(string.Format("Score Add {0}.", success ? "Successful" : "Failed"));
             if(success)

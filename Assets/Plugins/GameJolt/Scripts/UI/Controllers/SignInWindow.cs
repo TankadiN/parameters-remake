@@ -1,12 +1,13 @@
 ﻿using UnityEngine.UI;
 using System;
 using UnityEngine;
+using TMPro;
 
 namespace GameJolt.UI.Controllers {
 	public class SignInWindow : BaseWindow {
-		public InputField UsernameField;
-		public InputField TokenField;
-		public Text ErrorMessage;
+		public TMP_InputField UsernameField;
+		public TMP_InputField TokenField;
+		public TMP_Text ErrorMessage;
 		public Toggle RememberMeToggle;
 		public Toggle ShowTokenToggle;
 
@@ -70,7 +71,7 @@ namespace GameJolt.UI.Controllers {
 		}
 
 		public void ShowToken(bool show) {
-			TokenField.contentType = show ? InputField.ContentType.Standard : InputField.ContentType.Password;
+			TokenField.contentType = show ? TMP_InputField.ContentType.Standard : TMP_InputField.ContentType.Password;
 			TokenField.ActivateInputField();
 		}
 

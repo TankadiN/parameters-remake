@@ -38,37 +38,4 @@ public static class SaveLoadSystem
             return null;
         }
     }
-
-    public static void SaveLevel(LevelData Level)
-    {
-        BinaryFormatter bf = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/leveldata.lvl";
-        FileStream stream = new FileStream(path, FileMode.Create);
-
-        SaveLevelData SLevelData = new SaveLevelData(Level);
-
-        bf.Serialize(stream, SLevelData);
-        stream.Close();
-    }
-
-    public static SaveLevelData LoadLevel(string levelName)
-    {
-        string path = Application.persistentDataPath + "/" + levelName + ".lvl";
-        if (File.Exists(path))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
-
-            SaveLevelData SLevelData = bf.Deserialize(stream) as SaveLevelData;
-            stream.Close();
-
-            return SLevelData;
-
-        }
-        else
-        {
-            Debug.LogError("Level file not found in " + path);
-            return null;
-        }
-    }
 }

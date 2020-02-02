@@ -28,7 +28,6 @@ public class GoalChecker : MonoBehaviour
     public string Time;
     public int TimeScore;
     public int tableID;
-    [TextArea]
     public string DebugData;
 
 
@@ -140,7 +139,7 @@ public class GoalChecker : MonoBehaviour
                 ", Attack: " + PLR.CurrentAttack + "/" + PLR.MaxAttack +
                 ", Defense: " + PLR.CurrentDefense + "/" + PLR.MaxDefense;
         }
-        Debug.Log("Places Completed: " + plcount + ", Enemies Defeated: " + encount + ", Quota met?: " + FullComplete);
+        Debug.Log("Places Completed: " + plcount + "/" + Places.Count + ", Enemies Defeated: " + encount + "/" + Enemies.Count + ", Quota met?: " + FullComplete);
     }
     
     public void CloseCheatPanel()

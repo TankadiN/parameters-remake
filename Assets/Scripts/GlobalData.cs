@@ -8,6 +8,7 @@ public class GlobalData : MonoBehaviour
     public static GlobalData GD;
 
     public string levelString;
+    public int tableID;
 
     void Awake()
     {

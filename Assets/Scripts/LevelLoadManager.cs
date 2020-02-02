@@ -26,64 +26,71 @@ public class LevelLoadManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(Load());
-        }
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-            Level.SendData();
-        }
-        if(Input.GetKeyDown(KeyCode.N))
-        {
-            Level.GetInstPlaces();
-        }
+
     }
 
     public IEnumerator Load()
     {
-        Level.LoadPlacesButton(GlobalData.GD.levelString);
+        Level.ExecuteLoad(GlobalData.GD.levelString);
         yield return new WaitForSeconds(1f);
-        for(int i = 0; i <= Level.rectX.Length -1; i++)
+        foreach (PlaceInfo p in Level.Places)
         {
-            if(Level.PlaceType[i] == LevelData.Type.Place)
+            if (p.PlaceType == PlaceInfo.Type.Place)
             {
                 GameObject go = Instantiate(Place) as GameObject;
-                go.name = "Place"+i;
+                go.name = "Place";
                 go.transform.SetParent(Container.transform);
+
+                go.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                go.GetComponent<RectTransform>().position = new Vector2(p.rectX, p.rectY);
+                go.GetComponent<RectTransform>().sizeDelta = new Vector2(p.rectWidth, p.rectHeight);
+
+
+                go.GetComponent<Place>().SilverLock = p.SilverLock;
+                go.GetComponent<Place>().GoldLock = p.GoldLock;
+
+                go.GetComponent<Place>().ProgressNeeded = p.ProgressNeeded;
+                go.GetComponent<Place>().EnergyNeeded = p.EnergyNeeded;
+
+                go.GetComponent<Place>().MinExpOngoing = p.MinExpOngoing;
+                go.GetComponent<Place>().MaxExpOngoing = p.MaxExpOngoing;
+
+                go.GetComponent<Place>().MinGoldOngoing = p.MinGoldOngoing;
+                go.GetComponent<Place>().MaxGoldOngoing = p.MaxGoldOngoing;
+
+                go.GetComponent<Place>().MinGoldCompleted = p.MaxGoldCompleted;
+                go.GetComponent<Place>().MaxGoldCompleted = p.MaxGoldCompleted;
+                Debug.Log("Place Loaded");
+                yield return new WaitForSeconds(0.1f);
             }
-            if (Level.PlaceType[i] == LevelData.Type.Enemy)
+            if (p.PlaceType == PlaceInfo.Type.Enemy)
             {
                 GameObject go = Instantiate(Enemy) as GameObject;
-                go.name = "Enemy"+i;
+                go.name = "Enemy";
                 go.transform.SetParent(Container.transform);
             }
-            if (Level.PlaceType[i] == LevelData.Type.Shop)
+            if (p.PlaceType == PlaceInfo.Type.Shop)
             {
                 GameObject go = Instantiate(Shop) as GameObject;
-                go.name = "Shop"+i;
+                go.name = "Shop";
                 go.transform.SetParent(Container.transform);
             }
-            if (Level.PlaceType[i] == LevelData.Type.Jackpot)
+            if (p.PlaceType == PlaceInfo.Type.Jackpot)
             {
                 GameObject go = Instantiate(Jackpot) as GameObject;
-                go.name = "Jackpot"+i;
+                go.name = "Jackpot";
                 go.transform.SetParent(Container.transform);
             }
-            if (Level.PlaceType[i] == LevelData.Type.Treasure)
+            if (p.PlaceType == PlaceInfo.Type.Treasure)
             {
                 GameObject go = Instantiate(Treasure) as GameObject;
-                go.name = "Treasure" + i;
+                go.name = "Treasure";
                 go.transform.SetParent(Container.transform);
             }
+            yield return new WaitForSeconds(0.5f);
+            LoadPanel.SetActive(false);
+            GoalChecker.GC.GetPlaces();
+            OL.Disable = false;
         }
-        yield return new WaitForSeconds(1f);
-        Level.GetInstPlaces();
-        yield return new WaitForSeconds(1f);
-        Level.SendData();
-        yield return new WaitForSeconds(0.5f);
-        LoadPanel.SetActive(false);
-        GoalChecker.GC.GetPlaces();
-        OL.Disable = false;
     }
 }

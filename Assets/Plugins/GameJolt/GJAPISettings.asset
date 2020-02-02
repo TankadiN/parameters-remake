@@ -16,11 +16,11 @@ MonoBehaviour:
   privateKey: 5167320406eb090e51b8a985b867da67
   timeout: 10
   autoPing: 1
-  autoSignInOutMessage: 1
-  signInMessage: Signed in as <b>{0}</b>
+  autoSignInOutMessage: 0
+  signInMessage: Signed in as '{0}'
   signOutMessage: Signed out
   useCaching: 1
-  encryptionKey: V?JE5?s-PN/3Mq?q
+  encryptionKey: WJcRi4!&7K5cVC!j
   logLevel: 1
   secretTrophies: 
   autoConnect: 0
