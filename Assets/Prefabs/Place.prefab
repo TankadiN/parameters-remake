@@ -569,7 +569,7 @@ MonoBehaviour:
   PercentText: {fileID: 3902301196831003873}
   Lock: {fileID: 3902301196093146850}
   Completed: 0
-  SilverLock: 1
+  SilverLock: 0
   SilverColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}

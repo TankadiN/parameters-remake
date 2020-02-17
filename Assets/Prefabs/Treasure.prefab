@@ -654,13 +654,15 @@ MonoBehaviour:
   BackgroundGameobject: {fileID: 4387933600724104323}
   ChestGameobject: {fileID: 897034542788690718}
   LockGameobject: {fileID: 4387933602473496761}
+  treasureMode: 0
   Active: 0
   GoldLock: 1
-  Method: life
+  Method: 0
   Cost: 0
   Value: 0
-  Free: 0
-  FreeBought: 0
+  alreadyClaimed: 0
+  condition: 0
+  conditionValue: 0
 --- !u!1 &4387933602473496763
 GameObject:
   m_ObjectHideFlags: 0

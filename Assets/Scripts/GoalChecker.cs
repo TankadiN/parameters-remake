@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using GameJolt.API;
 
 public class GoalChecker : MonoBehaviour
 {
@@ -12,9 +14,11 @@ public class GoalChecker : MonoBehaviour
 
     [Header("Places")]
     public bool PlacesCompleted;
+    public int placeCount;
     public List<Place> Places;
     [Header("Enemies")]
     public bool EnemiesCompleted;
+    public int enemyCount;
     public List<Enemy> Enemies;
     [Header("Cheat Measurements")]
     public Button SendScoreButton;
@@ -28,11 +32,8 @@ public class GoalChecker : MonoBehaviour
     public string Time;
     public int TimeScore;
     public int tableID;
+    [TextArea]
     public string DebugData;
-
-
-    private int plcount;
-    private int encount;
 
     private void Awake()
     {
@@ -50,6 +51,7 @@ public class GoalChecker : MonoBehaviour
                 CheatsEnabledPanel.SetActive(true);
             }
         }
+        tableID = GlobalData.GD.tableID;
     }
 
     public void GetPlaces()
@@ -84,6 +86,10 @@ public class GoalChecker : MonoBehaviour
                 EndPanelTextWarning.SetActive(true);
             }
         }
+        /*if(GameJoltAPI.Instance && GameJoltAPI.Instance.HasSignedInUser == false)
+        {
+            SendScoreButton.interactable = false;
+        }*/
         if (Input.GetKeyDown(KeyCode.P))
         {
             GetPlaces();
@@ -97,27 +103,27 @@ public class GoalChecker : MonoBehaviour
 
     public void CheckWin()
     {
-        plcount = 0;
-        encount = 0;
+        placeCount = 0;
+        enemyCount = 0;
         for(int i = 0; i <= Places.Count - 1; i++)
         {
             if(Places[i].Completed)
             {
-                plcount++;
+                placeCount++;
             }
         }
         for (int i = 0; i <= Enemies.Count - 1; i++)
         {
             if (Enemies[i].Dead)
             {
-                encount++;
+                enemyCount++;
             }
         }
-        if(plcount == Places.Count )
+        if(placeCount == Places.Count )
         {
             PlacesCompleted = true;
         }
-        if(encount == Enemies.Count)
+        if(enemyCount == Enemies.Count)
         {
             EnemiesCompleted = true;
         }
@@ -135,11 +141,11 @@ public class GoalChecker : MonoBehaviour
                 ", Exp: " + PLR.CurrentExperience + "/" + PLR.NeededExperience +
                 ", Life: " + PLR.CurrentHealth + "/" + PLR.MaxHealth +
                 ", Energy: " + PLR.CurrentEnergy + "/" + PLR.MaxEnergy +
-                ", Recovery: " + PLR.CurrentRecovery + "/" + PLR.MaxRecovery +
+                ", Recovery: " + PLR.CurrentRecovery + "/" + PLR.MaxRecovery + 
                 ", Attack: " + PLR.CurrentAttack + "/" + PLR.MaxAttack +
                 ", Defense: " + PLR.CurrentDefense + "/" + PLR.MaxDefense;
         }
-        Debug.Log("Places Completed: " + plcount + "/" + Places.Count + ", Enemies Defeated: " + encount + "/" + Enemies.Count + ", Quota met?: " + FullComplete);
+        Debug.Log("Places Completed: " + placeCount + "/" + Places.Count + ", Enemies Defeated: " + enemyCount + "/" + Enemies.Count + ", Quota met?: " + FullComplete);
     }
     
     public void CloseCheatPanel()

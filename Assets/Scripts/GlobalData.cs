@@ -10,6 +10,11 @@ public class GlobalData : MonoBehaviour
     public string levelString;
     public int tableID;
 
+    public int minutes;
+    public int seconds;
+
+    public bool isTimeAttack;
+
     void Awake()
     {
         DDOL();

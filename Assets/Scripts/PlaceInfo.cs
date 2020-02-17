@@ -25,6 +25,13 @@ public class PlaceInfo
 
     public float Cost, Value;
 
+    public Shop.ShopList StoreType;
+
+    public Player.Condition Condition;
+    public int ConditionValue;
+    public Treasure.TreasureType TreasureMode;
+    public Treasure.ItemType TreasureItem;
+
     public PlaceInfo(
         float newRectX,
         float newRectY,
@@ -43,23 +50,28 @@ public class PlaceInfo
         //For Place
         float newMinGoldOngoing,
         float newMaxGoldOngoing,
-        float newMinGoldCompleted, 
+        float newMinGoldCompleted,
         float newMaxGoldCompleted,
         //For Enemy
-        float newMaxHealth, 
+        float newMaxHealth,
         float newEnemyAttack,
-        float newMinExp, 
+        float newMinExp,
         float newMaxExp,
-        float newMinGold, 
+        float newMinGold,
         float newMaxGold,
         //Keys
-        float newMinSKeys, 
-        float newMaxSKeys, 
-        float newMinGKeys, 
+        float newMinSKeys,
+        float newMaxSKeys,
+        float newMinGKeys,
         float newMaxGKeys,
         //Misc.
-        float newCost, 
-        float newValue)
+        float newCost,
+        float newValue,
+        Shop.ShopList newStoreType,
+        Player.Condition newCondition,
+        int newConditionValue,
+        Treasure.TreasureType newTreasureMode,
+        Treasure.ItemType newTreasureItem)
     {
         rectX = newRectX;
         rectY = newRectY;
@@ -95,5 +107,11 @@ public class PlaceInfo
 
         Cost = newCost;
         Value = newValue;
+        StoreType = newStoreType;
+
+        Condition = newCondition;
+        ConditionValue = newConditionValue;
+        TreasureMode = newTreasureMode;
+        TreasureItem = newTreasureItem;
     }
 }

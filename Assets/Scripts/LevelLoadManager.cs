@@ -68,29 +68,83 @@ public class LevelLoadManager : MonoBehaviour
                 GameObject go = Instantiate(Enemy) as GameObject;
                 go.name = "Enemy";
                 go.transform.SetParent(Container.transform);
+
+                go.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                go.GetComponent<RectTransform>().position = new Vector2(p.rectX, p.rectY);
+                go.GetComponent<RectTransform>().sizeDelta = new Vector2(p.rectWidth, p.rectHeight);
+
+                go.GetComponent<Enemy>().SilverLock = p.SilverLock;
+                go.GetComponent<Enemy>().GoldLock = p.GoldLock;
+
+                go.GetComponent<Enemy>().MaxHealth = p.MaxHealth;
+                go.GetComponent<Enemy>().EnemyAttack = p.EnemyAttack;
+
+                go.GetComponent<Enemy>().MinExp = p.MinExp;
+                go.GetComponent<Enemy>().MaxExp = p.MaxExp;
+
+                go.GetComponent<Enemy>().MinGold = p.MinGold;
+                go.GetComponent<Enemy>().MaxGold = p.MaxExp;
+
+                go.GetComponent<Enemy>().MinSKeys = p.MinSKeys;
+                go.GetComponent<Enemy>().MaxSKeys = p.MaxSKeys;
+
+                go.GetComponent<Enemy>().MinGKeys = p.MinGKeys;
+                go.GetComponent<Enemy>().MaxGKeys = p.MaxGKeys;
+
             }
             if (p.PlaceType == PlaceInfo.Type.Shop)
             {
                 GameObject go = Instantiate(Shop) as GameObject;
                 go.name = "Shop";
                 go.transform.SetParent(Container.transform);
+
+                go.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                go.GetComponent<RectTransform>().position = new Vector2(p.rectX, p.rectY);
+                go.GetComponent<RectTransform>().sizeDelta = new Vector2(p.rectWidth, p.rectHeight);
+
+                go.GetComponent<Shop>().ShopType = p.StoreType;
+                go.GetComponent<Shop>().Cost = p.Cost;
+                go.GetComponent<Shop>().Value = p.Value;
             }
             if (p.PlaceType == PlaceInfo.Type.Jackpot)
             {
                 GameObject go = Instantiate(Jackpot) as GameObject;
                 go.name = "Jackpot";
                 go.transform.SetParent(Container.transform);
+
+                go.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                go.GetComponent<RectTransform>().position = new Vector2(p.rectX, p.rectY);
+                go.GetComponent<RectTransform>().sizeDelta = new Vector2(p.rectWidth, p.rectHeight);
+
+                go.GetComponent<Jackpot>().Cost = p.Cost;
+                go.GetComponent<Jackpot>().condition = p.Condition;
+                go.GetComponent<Jackpot>().conditionValue = p.ConditionValue;
             }
             if (p.PlaceType == PlaceInfo.Type.Treasure)
             {
                 GameObject go = Instantiate(Treasure) as GameObject;
                 go.name = "Treasure";
                 go.transform.SetParent(Container.transform);
+
+                go.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                go.GetComponent<RectTransform>().position = new Vector2(p.rectX, p.rectY);
+                go.GetComponent<RectTransform>().sizeDelta = new Vector2(p.rectWidth, p.rectHeight);
+
+                go.GetComponent<Treasure>().Cost = p.Cost;
+                go.GetComponent<Treasure>().condition = p.Condition;
+                go.GetComponent<Treasure>().conditionValue = p.ConditionValue;
+
+                go.GetComponent<Treasure>().treasureMode = p.TreasureMode;
+                go.GetComponent<Treasure>().Item = p.TreasureItem;
             }
-            yield return new WaitForSeconds(0.5f);
-            LoadPanel.SetActive(false);
-            GoalChecker.GC.GetPlaces();
-            OL.Disable = false;
+            //yield return new WaitForSeconds(0.5f);
         }
+        LoadPanel.SetActive(false);
+        GoalChecker.GC.GetPlaces();
+        if (GameObject.Find("GameManager").GetComponent<Timer>().Active)
+        {
+            GameObject.Find("GameManager").GetComponent<Timer>().CountDown = true;
+        }
+        OL.Disable = false;
     }
 }

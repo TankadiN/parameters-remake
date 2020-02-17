@@ -20,6 +20,9 @@ public class Jackpot : MonoBehaviour
     [Header("Other")]
     public bool Active;
     public float Cost;
+    [Header("Unlock Conditions")]
+    public Player.Condition condition;
+    public int conditionValue;
 
     int rolledA;
     int rolledB;
@@ -79,6 +82,28 @@ public class Jackpot : MonoBehaviour
         if(SpinC)
         {
             rolledC = Random.Range(0, Symbols.Length);
+        }
+
+        if(condition == Player.Condition.Combo)
+        {
+            if(PLR.CurrentCombo >= conditionValue)
+            {
+                Active = true;
+            }
+        }
+        if(condition == Player.Condition.PlacesCompleted)
+        {
+            if(GoalChecker.GC.placeCount >= conditionValue)
+            {
+                Active = true;
+            }
+        }
+        if (condition == Player.Condition.EnemiesDefeated)
+        {
+            if (GoalChecker.GC.enemyCount >= conditionValue)
+            {
+                Active = true;
+            }
         }
     }
 

@@ -56,6 +56,11 @@ public class LevelData : MonoBehaviour
                 0,
                 0,
                 0,
+                0,
+                0,
+                0,
+                0,
+                0,
                 0
                 ));
                 Debug.Log("Saved Place");
@@ -89,9 +94,125 @@ public class LevelData : MonoBehaviour
                 o.GetComponent<Enemy>().MinGKeys,
                 o.GetComponent<Enemy>().MaxGKeys,
                 0,
+                0,
+                0,
+                0,
+                0,
+                0,
                 0
                 ));
                 Debug.Log("Saved Enemy");
+            }
+            if (o.GetComponent<Shop>())
+            {
+                Places.Add(new PlaceInfo(
+                o.GetComponent<RectTransform>().position.x,
+                o.GetComponent<RectTransform>().position.y,
+                o.GetComponent<RectTransform>().rect.width,
+                o.GetComponent<RectTransform>().rect.height,
+                PlaceInfo.Type.Shop,
+                false,
+                false,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                o.GetComponent<Shop>().Cost,
+                o.GetComponent<Shop>().Value,
+                o.GetComponent<Shop>().ShopType,
+                0,
+                0,
+                0,
+                0
+                ));
+            }
+            if (o.GetComponent<Jackpot>())
+            {
+                Places.Add(new PlaceInfo(
+                o.GetComponent<RectTransform>().position.x,
+                o.GetComponent<RectTransform>().position.y,
+                o.GetComponent<RectTransform>().rect.width,
+                o.GetComponent<RectTransform>().rect.height,
+                PlaceInfo.Type.Jackpot,
+                false,
+                false,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                o.GetComponent<Jackpot>().Cost,
+                0,
+                0,
+                o.GetComponent<Jackpot>().condition,
+                o.GetComponent<Jackpot>().conditionValue,
+                0,
+                0
+                ));
+            }
+            if (o.GetComponent<Treasure>())
+            {
+                Places.Add(new PlaceInfo(
+                o.GetComponent<RectTransform>().position.x,
+                o.GetComponent<RectTransform>().position.y,
+                o.GetComponent<RectTransform>().rect.width,
+                o.GetComponent<RectTransform>().rect.height,
+                PlaceInfo.Type.Treasure,
+                false,
+                false,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                o.GetComponent<Treasure>().Cost,
+                o.GetComponent<Treasure>().Value,
+                0,
+                o.GetComponent<Treasure>().condition,
+                o.GetComponent<Treasure>().conditionValue,
+                o.GetComponent<Treasure>().treasureMode,
+                o.GetComponent<Treasure>().Item;
+                ));
             }
         }
     }
@@ -127,7 +248,8 @@ public class LevelData : MonoBehaviour
                 p.MinGKeys,
                 p.MaxGKeys,
                 p.Cost,
-                p.Value
+                p.Value,
+                p.StoreType
                 ));
             Debug.Log("Loaded entity");
         }

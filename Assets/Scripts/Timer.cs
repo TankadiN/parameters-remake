@@ -15,6 +15,8 @@ public class Timer : MonoBehaviour
     public TMP_Text TimeText;
     public Image[] Bars;
 
+    public Gradient gradient;
+
     public float TimeMiliseconds = 1f;
     public int Seconds;
     public int Minutes;
@@ -25,6 +27,13 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (GlobalData.GD.isTimeAttack)
+        {
+            Active = true;
+            Minutes = GlobalData.GD.minutes;
+            Seconds = GlobalData.GD.seconds;
+        }
+
         startseconds = Minutes * 60 + Seconds;
         pitchRaised = false;
     }
@@ -36,7 +45,7 @@ public class Timer : MonoBehaviour
         {
             foreach (Image i in Bars)
             {
-                i.color = new Color32(0, 157, 0, 255);
+                i.color = gradient.Evaluate(i.fillAmount);
             }
             TimeText.color = new Color32(255, 255, 255, 255);
             TimeText.text = Minutes.ToString("00") + ":" + Seconds.ToString("00");
@@ -70,13 +79,8 @@ public class Timer : MonoBehaviour
         foreach(Image i in Bars)
         {
             i.fillAmount = currentseconds / startseconds;
-            if(i.fillAmount <= 0.50)
-            {
-                i.color = new Color32(204, 204, 0, 255);
-            }
             if (i.fillAmount <= 0.25)
             {
-                i.color = new Color32(187, 0, 0, 255);
                 if(!pitchRaised)
                 {
                     AudioMixer.SetFloat("MasterPitch", 1.50f);

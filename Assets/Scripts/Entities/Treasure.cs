@@ -15,15 +15,24 @@ public class Treasure : MonoBehaviour
     public Image ChestGameobject;
     public Image LockGameobject;
 
+    public enum TreasureType {Paid, Free}
+
+    public TreasureType treasureMode;
+
     public bool Active;
     public bool GoldLock;
 
-    public string Method;
+    public enum ItemType {LifeUP, LifeRecovery, EnergyUP, AddUpgradePoint }
+
+    public ItemType Item;
     public float Cost;
     public float Value;
 
-    public bool Free;
-    public bool FreeBought;
+    public bool alreadyClaimed;
+
+    [Header("Unlock Conditions")]
+    public Player.Condition condition;
+    public int conditionValue;
 
     void Start()
     {
@@ -33,131 +42,158 @@ public class Treasure : MonoBehaviour
 
     private void Update()
     {
-        if(Active)
+        if (treasureMode == TreasureType.Paid)
         {
-            if(GoldLock)
+            ChestGameobject.color = new Color32(255, 255, 255, 0);
+            UpperTextGameobject.text = "$" + Cost.ToString("0");
+            if (Item == ItemType.LifeUP)
+            {
+                LowerTextGameobject.text = "Life++";
+            }
+            if (Item == ItemType.LifeRecovery)
+            {
+                LowerTextGameobject.text = "Life Rcv.";
+            }
+            if (Item == ItemType.EnergyUP)
+            {
+                LowerTextGameobject.text = "Energy++";
+            }
+            if (Item == ItemType.AddUpgradePoint)
+            {
+                LowerTextGameobject.text = "Add Upgr.";
+            }
+            if (GoldLock)
             {
                 BackgroundGameobject.color = new Color32(0, 0, 0, 255);
                 LockGameobject.color = new Color32(255, 200, 0, 255);
             }
-            if(!GoldLock)
+            else
             {
                 BackgroundGameobject.color = new Color32(165, 93, 255, 255);
                 LockGameobject.color = new Color32(255, 255, 255, 0);
             }
-            if (Free)
-            {
-                UpperTextGameobject.text = "+" + Value + "" + Method;
-                LowerTextGameobject.text = "";
-                ChestGameobject.color = new Color32(255, 255, 255, 255);
-            }
-            else
-            {
-                UpperTextGameobject.text = "$" + Cost.ToString("0");
-                if (Method == "life")
-                {
-                    LowerTextGameobject.text = "Life++";
-                }
-                if (Method == "lifeRCV")
-                {
-                    LowerTextGameobject.text = "Life Rcv.";
-                }
-                if (Method == "energy")
-                {
-                    LowerTextGameobject.text = "Energy++";
-                }
-                if (Method == "upgrade")
-                {
-                    LowerTextGameobject.text = "Add Upgr.";
-                }
-            }
-            if(FreeBought)
-            {
-                BackgroundGameobject.color = new Color32(101, 56, 156, 255);
-                gameObject.GetComponent<Button>().interactable = false;
-            }
         }
-        else
+        if(treasureMode == TreasureType.Free)
         {
             BackgroundGameobject.color = new Color32(0, 0, 0, 255);
-            if (Free)
+            LockGameobject.color = new Color32(255, 255, 255, 0);
+            LowerTextGameobject.text = "";
+            ChestGameobject.color = new Color32(255, 255, 255, 255);
+            if (Active)
             {
-                UpperTextGameobject.text = "?";
-                LowerTextGameobject.text = "";
-                ChestGameobject.color = new Color32(255, 255, 255, 255);
+                BackgroundGameobject.color = new Color32(165, 93, 255, 255);
+                if (Item == ItemType.LifeUP)
+                {
+                    UpperTextGameobject.text = "+" + Value + " " + "Life";
+                }
+                if (Item == ItemType.LifeRecovery)
+                {
+                    UpperTextGameobject.text = "+" + Value + " " + "Life Rcv.";
+                }
+                if (Item == ItemType.EnergyUP)
+                {
+                    UpperTextGameobject.text = "+" + Value + " " + "Energy";
+                }
+                if (Item == ItemType.AddUpgradePoint)
+                {
+                    UpperTextGameobject.text = "+" + Value + " " + "Upgr. Points";
+                }
+                if(alreadyClaimed)
+                {
+                    BackgroundGameobject.color = new Color32(101, 56, 156, 255);
+                    gameObject.GetComponent<Button>().interactable = false;
+                }
             }
             else
             {
-                ChestGameobject.color = new Color32(255, 255, 255, 0);
-                UpperTextGameobject.text = "$" + Cost.ToString("0");
-                if (Method == "life")
-                {
-                    LowerTextGameobject.text = "Life++";
-                }
-                if (Method == "lifeRCV")
-                {
-                    LowerTextGameobject.text = "Life Rcv.";
-                }
-                if (Method == "energy")
-                {
-                    LowerTextGameobject.text = "Energy++";
-                }
-                if (Method == "upgrade")
-                {
-                    LowerTextGameobject.text = "Add Upgr.";
-                }
+                UpperTextGameobject.text = "?";
+            }
+        }
+
+        if (condition == Player.Condition.Combo)
+        {
+            if (PLR.CurrentCombo >= conditionValue)
+            {
+                Active = true;
+            }
+        }
+        if (condition == Player.Condition.PlacesCompleted)
+        {
+            if (GoalChecker.GC.placeCount >= conditionValue)
+            {
+                Active = true;
+            }
+        }
+        if (condition == Player.Condition.EnemiesDefeated)
+        {
+            if (GoalChecker.GC.enemyCount >= conditionValue)
+            {
+                Active = true;
             }
         }
     }
 
     public void OnClick()
     {
-        if (Active)
+        if(treasureMode == TreasureType.Paid)
         {
             if (!GoldLock)
             {
-                if (PLR.Money >= Cost || Free)
+                if (PLR.Money >= Cost)
                 {
-                    if (Method == "life")
+                    if (Item == ItemType.LifeUP)
                     {
                         PLR.Money -= Cost;
                         PLR.MaxHealth += Value;
                         Cost += 5;
                     }
-                    if (Method == "lifeRCV")
+                    if (Item == ItemType.LifeRecovery)
                     {
                         PLR.Money -= Cost;
                         PLR.CurrentHealth = PLR.MaxHealth;
                     }
-                    if (Method == "energy")
+                    if (Item == ItemType.EnergyUP)
                     {
                         PLR.Money -= Cost;
-                        PLR.CurrentHealth = PLR.MaxHealth;
+                        PLR.MaxEnergy += Value;
                         Cost += 5;
                     }
-                    if (Method == "upgrade")
+                    if (Item == ItemType.AddUpgradePoint)
                     {
                         PLR.Money -= Cost;
                         PLR.UpgradePoints = Value;
-                    }
-                    if(Free)
-                    {
-                        FreeBought = true;
                     }
                 }
             }
             else
             {
-                if(PLR.GoldenKeys > 0)
+                if (PLR.GoldenKeys > 0)
                 {
                     GoldLock = false;
                     PLR.GoldenKeys -= 1;
                 }
             }
         }
-        else
-        {
 
+        if (treasureMode == TreasureType.Free)
+        {
+            if (Item == ItemType.LifeUP)
+            {
+                PLR.MaxHealth += Value;
+            }
+            if (Item == ItemType.LifeRecovery)
+            {
+                PLR.CurrentHealth = PLR.MaxHealth;
+            }
+            if (Item == ItemType.EnergyUP)
+            {
+                PLR.MaxEnergy += Value;
+            }
+            if (Item == ItemType.AddUpgradePoint)
+            {
+                PLR.UpgradePoints = Value;
+            }
+            alreadyClaimed = true;
         }
     }
 }

@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     [Header("Combo")]
     public Image ComboImageGameobject;
     public TMP_Text ComboTextGameobject;
-    public float CurrentCombo;
+    public int CurrentCombo;
     public float MaxComboTimer;
     public float CurrentComboTimer;
     [Header("Recovery")]
@@ -57,6 +57,8 @@ public class Player : MonoBehaviour
     public float CurrentDefense;
 
     private OutputLog OL;
+
+    public enum Condition {PlacesCompleted, EnemiesDefeated, Combo}
 
     void Start()
     {
