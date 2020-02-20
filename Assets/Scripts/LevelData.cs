@@ -211,7 +211,7 @@ public class LevelData : MonoBehaviour
                 o.GetComponent<Treasure>().condition,
                 o.GetComponent<Treasure>().conditionValue,
                 o.GetComponent<Treasure>().treasureMode,
-                o.GetComponent<Treasure>().Item;
+                o.GetComponent<Treasure>().Item
                 ));
             }
         }
@@ -249,7 +249,11 @@ public class LevelData : MonoBehaviour
                 p.MaxGKeys,
                 p.Cost,
                 p.Value,
-                p.StoreType
+                p.StoreType,
+                p.Condition,
+                p.ConditionValue,
+                p.TreasureMode,
+                p.TreasureItem
                 ));
             Debug.Log("Loaded entity");
         }

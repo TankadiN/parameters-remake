@@ -14,8 +14,6 @@ public class MainMenu : MonoBehaviour
     public GameObject OptionsPanel;
     [Header("Credits")]
     public GameObject CreditsPanel;
-    public string NekogamesWebsite;
-    public string WolfteamWebsite;
     [Header("Gamejolt")]
     public GameObject GamejoltPanel;
     [Header("Warning")]
@@ -112,14 +110,6 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void Nekogames()
-    {
-        Application.OpenURL(NekogamesWebsite);
-    }
-    public void Wolfteam()
-    {
-        Application.OpenURL(WolfteamWebsite);
-    }
     public void Exit()
     {
         Application.Quit();
