@@ -105,6 +105,13 @@ public class Jackpot : MonoBehaviour
                 Active = true;
             }
         }
+        if (condition == Player.Condition.Level)
+        {
+            if (PLR.Level >= conditionValue)
+            {
+                Active = true;
+            }
+        }
     }
 
     public void Spinner()

@@ -21,18 +21,12 @@ public class LevelLoadManager : MonoBehaviour
         LoadPanel.SetActive(true);
         Level = GetComponent<LevelData>();
         OL = GameObject.Find("GameManager").GetComponent<OutputLog>();
-        StartCoroutine(Load());
+        LoadGame();
     }
 
-    void Update()
-    {
-
-    }
-
-    public IEnumerator Load()
+    public void LoadGame()
     {
         Level.ExecuteLoad(GlobalData.GD.levelString);
-        yield return new WaitForSeconds(1f);
         foreach (PlaceInfo p in Level.Places)
         {
             if (p.PlaceType == PlaceInfo.Type.Place)
@@ -58,10 +52,9 @@ public class LevelLoadManager : MonoBehaviour
                 go.GetComponent<Place>().MinGoldOngoing = p.MinGoldOngoing;
                 go.GetComponent<Place>().MaxGoldOngoing = p.MaxGoldOngoing;
 
-                go.GetComponent<Place>().MinGoldCompleted = p.MaxGoldCompleted;
+                go.GetComponent<Place>().MinGoldCompleted = p.MinGoldCompleted;
                 go.GetComponent<Place>().MaxGoldCompleted = p.MaxGoldCompleted;
                 Debug.Log("Place Loaded");
-                yield return new WaitForSeconds(0.1f);
             }
             if (p.PlaceType == PlaceInfo.Type.Enemy)
             {
@@ -83,14 +76,16 @@ public class LevelLoadManager : MonoBehaviour
                 go.GetComponent<Enemy>().MaxExp = p.MaxExp;
 
                 go.GetComponent<Enemy>().MinGold = p.MinGold;
-                go.GetComponent<Enemy>().MaxGold = p.MaxExp;
+                go.GetComponent<Enemy>().MaxGold = p.MaxGold;
+
+                go.GetComponent<Enemy>().Boss = p.Boss;
 
                 go.GetComponent<Enemy>().MinSKeys = p.MinSKeys;
                 go.GetComponent<Enemy>().MaxSKeys = p.MaxSKeys;
 
                 go.GetComponent<Enemy>().MinGKeys = p.MinGKeys;
                 go.GetComponent<Enemy>().MaxGKeys = p.MaxGKeys;
-
+                Debug.Log("Enemy Loaded");
             }
             if (p.PlaceType == PlaceInfo.Type.Shop)
             {
@@ -105,6 +100,7 @@ public class LevelLoadManager : MonoBehaviour
                 go.GetComponent<Shop>().ShopType = p.StoreType;
                 go.GetComponent<Shop>().Cost = p.Cost;
                 go.GetComponent<Shop>().Value = p.Value;
+                Debug.Log("Shop Loaded");
             }
             if (p.PlaceType == PlaceInfo.Type.Jackpot)
             {
@@ -119,6 +115,7 @@ public class LevelLoadManager : MonoBehaviour
                 go.GetComponent<Jackpot>().Cost = p.Cost;
                 go.GetComponent<Jackpot>().condition = p.Condition;
                 go.GetComponent<Jackpot>().conditionValue = p.ConditionValue;
+                Debug.Log("Jackpot Loaded");
             }
             if (p.PlaceType == PlaceInfo.Type.Treasure)
             {
@@ -136,15 +133,15 @@ public class LevelLoadManager : MonoBehaviour
 
                 go.GetComponent<Treasure>().treasureMode = p.TreasureMode;
                 go.GetComponent<Treasure>().Item = p.TreasureItem;
+                Debug.Log("Treasure Loaded");
             }
-            //yield return new WaitForSeconds(0.5f);
         }
-        LoadPanel.SetActive(false);
         GoalChecker.GC.GetPlaces();
         if (GameObject.Find("GameManager").GetComponent<Timer>().Active)
         {
             GameObject.Find("GameManager").GetComponent<Timer>().CountDown = true;
         }
         OL.Disable = false;
+        LoadPanel.SetActive(false);
     }
 }

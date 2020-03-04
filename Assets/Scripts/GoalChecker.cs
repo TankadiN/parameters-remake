@@ -20,6 +20,10 @@ public class GoalChecker : MonoBehaviour
     public bool EnemiesCompleted;
     public int enemyCount;
     public List<Enemy> Enemies;
+    [Header("Bosses")]
+    public bool BossesCompleted;
+    public int bossCount;
+    public List<Enemy> Bosses;
     [Header("Cheat Measurements")]
     public Button SendScoreButton;
     public GameObject PlayerPanelTextWarning;
@@ -29,9 +33,11 @@ public class GoalChecker : MonoBehaviour
     public bool FullComplete;
     public GameObject EndPanel;
     public TMP_Text TimeObject;
+    public TMP_Text LevelObject;
     public string Time;
     public int TimeScore;
     public int tableID;
+    public int levelIDToUnlock;
     [TextArea]
     public string DebugData;
 
@@ -52,6 +58,7 @@ public class GoalChecker : MonoBehaviour
             }
         }
         tableID = GlobalData.GD.tableID;
+        levelIDToUnlock = GlobalData.GD.levelID + 1;
     }
 
     public void GetPlaces()
@@ -65,14 +72,23 @@ public class GoalChecker : MonoBehaviour
             }
             if (o.GetComponent<Enemy>())
             {
-                Enemies.Add(o.GetComponent<Enemy>());
+                if(o.GetComponent<Enemy>().Boss)
+                {
+                    Bosses.Add(o.GetComponent<Enemy>());
+                }
+                else
+                {
+                    Enemies.Add(o.GetComponent<Enemy>());
+                }
             }
         }
     }
 
     private void Update()
     {
+        int levelIDname = levelIDToUnlock + 1;
         TimeObject.text = Time;
+        LevelObject.text = "Level " + levelIDname + " unlocked!";
         if(FullComplete)
         {
             EndPanel.SetActive(true);
@@ -82,6 +98,7 @@ public class GoalChecker : MonoBehaviour
             if (Console.CMD.EnabledCheats)
             {
                 SendScoreButton.interactable = false;
+                LevelObject.gameObject.SetActive(false);
                 PlayerPanelTextWarning.SetActive(true);
                 EndPanelTextWarning.SetActive(true);
             }
@@ -119,7 +136,14 @@ public class GoalChecker : MonoBehaviour
                 enemyCount++;
             }
         }
-        if(placeCount == Places.Count )
+        for (int i = 0; i <= Bosses.Count - 1; i++)
+        {
+            if (Bosses[i].Dead)
+            {
+                bossCount++;
+            }
+        }
+        if (placeCount == Places.Count )
         {
             PlacesCompleted = true;
         }
@@ -127,7 +151,11 @@ public class GoalChecker : MonoBehaviour
         {
             EnemiesCompleted = true;
         }
-        if(PlacesCompleted && EnemiesCompleted)
+        if (enemyCount == Bosses.Count)
+        {
+            BossesCompleted = true;
+        }
+        if (PlacesCompleted && EnemiesCompleted && BossesCompleted)
         {
             FullComplete = true;
             Time = OL.Hours.ToString("00") + ":" + OL.Minutes.ToString("00") + ":" + OL.Seconds.ToString("00");
@@ -144,8 +172,12 @@ public class GoalChecker : MonoBehaviour
                 ", Recovery: " + PLR.CurrentRecovery + "/" + PLR.MaxRecovery + 
                 ", Attack: " + PLR.CurrentAttack + "/" + PLR.MaxAttack +
                 ", Defense: " + PLR.CurrentDefense + "/" + PLR.MaxDefense;
+            if(!Console.CMD.EnabledCheats)
+            {
+                GlobalLevels.GL.Levels[levelIDToUnlock] = true;
+            }
         }
-        Debug.Log("Places Completed: " + placeCount + "/" + Places.Count + ", Enemies Defeated: " + enemyCount + "/" + Enemies.Count + ", Quota met?: " + FullComplete);
+        Debug.Log("Places Completed: " + placeCount + "/" + Places.Count + ", Enemies Defeated: " + enemyCount + "/" + Enemies.Count + ", Bosses Defeated: " + bossCount + "/" + Bosses.Count + ", Quota met?: " + FullComplete);
     }
     
     public void CloseCheatPanel()

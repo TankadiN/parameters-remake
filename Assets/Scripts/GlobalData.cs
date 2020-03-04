@@ -9,6 +9,7 @@ public class GlobalData : MonoBehaviour
 
     public string levelString;
     public int tableID;
+    public int levelID;
 
     public int minutes;
     public int seconds;
@@ -34,6 +35,14 @@ public class GlobalData : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    public void Clear()
+    {
+        levelString = null;
+        tableID = 0;
+        minutes = 0;
+        seconds = 0;
     }
 
 }

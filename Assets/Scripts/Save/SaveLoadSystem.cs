@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveLoadSystem
 {
-    public static void SaveGame(LevelsManager Levels, Console console, string fileNumber)
+    public static void SaveGame(GlobalLevels Levels, Console console, string fileNumber)
     {
         BinaryFormatter bf = new BinaryFormatter();
         string path = Application.persistentDataPath + "/savedata"+ fileNumber +".par";

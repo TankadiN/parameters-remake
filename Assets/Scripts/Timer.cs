@@ -7,6 +7,8 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
+    public GameObject TimeUpPanel;
+
     public bool Active;
     public bool CountDown;
 
@@ -83,10 +85,21 @@ public class Timer : MonoBehaviour
             {
                 if(!pitchRaised)
                 {
-                    AudioMixer.SetFloat("MasterPitch", 1.50f);
-                    pitchRaised = true;
+                    if (Minutes != 0 && Seconds != 0)
+                    {
+                        AudioMixer.SetFloat("MasterPitch", 1.50f);
+                        pitchRaised = true;
+                    }
                 }
             }
+        }
+
+        if(Minutes == 0 && Seconds == 0)
+        {
+            CountDown = false;
+            AudioMixer.SetFloat("MasterPitch", 1.00f);
+            pitchRaised = false;
+            TimeUpPanel.SetActive(true);
         }
     }
 }

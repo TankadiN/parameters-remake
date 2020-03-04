@@ -51,6 +51,7 @@ public class LevelData : MonoBehaviour
                 0,
                 0,
                 0,
+                false,
                 0,
                 0,
                 0,
@@ -89,6 +90,7 @@ public class LevelData : MonoBehaviour
                 o.GetComponent<Enemy>().MaxExp,
                 o.GetComponent<Enemy>().MinGold,
                 o.GetComponent<Enemy>().MaxGold,
+                o.GetComponent<Enemy>().Boss,
                 o.GetComponent<Enemy>().MinSKeys,
                 o.GetComponent<Enemy>().MaxSKeys,
                 o.GetComponent<Enemy>().MinGKeys,
@@ -127,6 +129,7 @@ public class LevelData : MonoBehaviour
                 0,
                 0,
                 0,
+                false,
                 0,
                 0,
                 0,
@@ -164,6 +167,7 @@ public class LevelData : MonoBehaviour
                 0,
                 0,
                 0,
+                false,
                 0,
                 0,
                 0,
@@ -201,6 +205,7 @@ public class LevelData : MonoBehaviour
                 0,
                 0,
                 0,
+                false,
                 0,
                 0,
                 0,
@@ -227,8 +232,8 @@ public class LevelData : MonoBehaviour
                 p.rectWidth,
                 p.rectHeight,
                 p.PlaceType,
-                p.GoldLock,
                 p.SilverLock,
+                p.GoldLock,
                 p.ProgressNeeded,
                 p.EnergyNeeded,
                 p.MinExpOngoing,
@@ -243,6 +248,7 @@ public class LevelData : MonoBehaviour
                 p.MaxExp,
                 p.MinGold,
                 p.MaxGold,
+                p.Boss,
                 p.MinSKeys,
                 p.MaxSKeys,
                 p.MinGKeys,
@@ -266,20 +272,22 @@ public class LevelData : MonoBehaviour
 
     void Load()
     {
+#if UNITY_EDITOR
         if(SaveLoad.SaveExists(levelName))
         {
             LoadLevel(SaveLoad.Load<List<PlaceInfo>>(levelName));
         }
+#else
+        if(SaveLoad.SaveExistsInDataPath(levelName))
+        {
+            LoadLevel(SaveLoad.LoadFromDataPath<List<PlaceInfo>>(levelName));
+        }
+#endif
     }
 
     public void CollectLevelData()
     {
         StartCoroutine(GetPlaces());
-    }
-
-    public void CollectInstantiatedPlaces()
-    {
-        targetplace = GameObject.FindGameObjectsWithTag("Place");
     }
 
     public void SaveToFile()

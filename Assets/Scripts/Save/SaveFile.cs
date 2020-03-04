@@ -64,7 +64,7 @@ public class SaveFile : MonoBehaviour
     {
         if(SaveManager.SM.Save)
         {
-            SaveLoadSystem.SaveGame(LevelsManager.LM, Console.CMD, fileNumber);
+            SaveLoadSystem.SaveGame(GlobalLevels.GL, Console.CMD, fileNumber);
             Debug.Log("Saved");
             SaveLoadOutput.text = "Saved to file " + fileNumber;
         }
@@ -80,5 +80,6 @@ public class SaveFile : MonoBehaviour
             SaveLoadOutput.text = "Loaded file " + fileNumber;
         }
         RefreshInfo();
+        LevelsManager.LM.UpdateLevels();
     }
 }

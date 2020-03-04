@@ -17,6 +17,8 @@ public class PlaceInfo
     public float MinExpOngoing, MaxExpOngoing;
     public float MinGoldOngoing, MaxGoldOngoing;
     public float MinGoldCompleted, MaxGoldCompleted;
+    public bool Boss;
+
 
     public float MaxHealth, EnemyAttack;
     public float MinExp, MaxExp;
@@ -59,6 +61,7 @@ public class PlaceInfo
         float newMaxExp,
         float newMinGold,
         float newMaxGold,
+        bool newBoss,
         //Keys
         float newMinSKeys,
         float newMaxSKeys,
@@ -99,6 +102,7 @@ public class PlaceInfo
         MaxExp = newMaxExp;
         MinGold = newMinGold;
         MaxGold = newMaxGold;
+        Boss = newBoss;
 
         MinSKeys = newMinSKeys;
         MaxSKeys = newMaxSKeys;

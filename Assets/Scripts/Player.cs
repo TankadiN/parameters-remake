@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
 
     private OutputLog OL;
 
-    public enum Condition {PlacesCompleted, EnemiesDefeated, Combo}
+    public enum Condition {PlacesCompleted, EnemiesDefeated, Combo, Level}
 
     void Start()
     {
@@ -144,7 +144,7 @@ public class Player : MonoBehaviour
         //Gameplay Mechanics
         if(CurrentExperience > NeededExperience)
         {
-            float EXP_VALUE_UP = Random.Range(5, 10);
+            float EXP_VALUE_UP = Random.Range(250, 500);
             OL.AddLog("<color=#FF00FF>LEVEL UP!</color> <color=#FF0000>+3 Upgrade Points</color>");
             CurrentExperience = 0;
             NeededExperience += EXP_VALUE_UP;
@@ -187,6 +187,7 @@ public class Player : MonoBehaviour
         {
             CurrentRecovery += 1;
             UpgradePoints -= 1;
+            OL.AddLog("<color=#00FFFF>Recovery Upgraded: +1</color>");
         }
         else
         {
@@ -197,8 +198,10 @@ public class Player : MonoBehaviour
     {
         if (UpgradePoints > 0)
         {
-            MaxAttack += 1;
+            float ATK_VALUE_UP = Random.Range(1, 5);
+            MaxAttack += ATK_VALUE_UP;
             UpgradePoints -= 1;
+            OL.AddLog("<color=#FF0000>Attack Upgraded: +" + ATK_VALUE_UP + "</color>");
         }
         else
         {
@@ -209,8 +212,10 @@ public class Player : MonoBehaviour
     {
         if (UpgradePoints > 0)
         {
-            MaxDefense += 1;
+            float DEF_VALUE_UP = Random.Range(1, 5);
+            MaxDefense += DEF_VALUE_UP;
             UpgradePoints -= 1;
+            OL.AddLog("<color=#8000FF>Defense Upgraded: +" + DEF_VALUE_UP + "</color>");
         }
         else
         {

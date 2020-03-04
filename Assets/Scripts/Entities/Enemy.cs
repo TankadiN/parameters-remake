@@ -10,11 +10,13 @@ public class Enemy : MonoBehaviour
     public Image HealthBackground;
     public TMP_Text HealthText;
     public Image Lock;
-    public bool Dead;
+    public Image BossIcon;
 
     private OutputLog OL;
     private Player PLR;
     [Header("Variables")]
+    public bool Boss;
+    public bool Dead;
     public bool Recover;
     public bool SilverLock;
     public Color SilverColor;
@@ -36,9 +38,12 @@ public class Enemy : MonoBehaviour
     public float MinGKeys;
     public float MaxGKeys;
 
+    private Color BossColor = new Color(128, 0, 0, 255);
+
     void Start()
     {
         HealthBar.color = new Color32(255, 190, 0, 255);
+        CurrentHealth = MaxHealth;
         OL = GameObject.Find("GameManager").GetComponent<OutputLog>();
         PLR = GameObject.Find("GameManager").GetComponent<Player>();
     }
@@ -81,6 +86,14 @@ public class Enemy : MonoBehaviour
         if (SilverLock == false && GoldLock == false)
         {
             Lock.color = new Color32(255, 255, 255, 0);
+        }
+        if (Boss)
+        {
+            BossIcon.color = BossColor;
+        }
+        if (!Boss)
+        {
+            BossIcon.color = new Color32(255, 255, 255, 0);
         }
     }
 

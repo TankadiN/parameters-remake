@@ -10,6 +10,9 @@ public class MainMenu : MonoBehaviour
     public GameObject Dev;
     [Header("Play")]
     public GameObject PlayPanel;
+    [Header("HowToPlay")]
+    public GameObject HowToPanel;
+    public GameObject[] HowToPages;
     [Header("Options")]
     public GameObject OptionsPanel;
     [Header("Credits")]
@@ -108,6 +111,36 @@ public class MainMenu : MonoBehaviour
         {
             WarningPanel.SetActive(false);
         }
+    }
+
+    public void HowToPlay()
+    {
+        if (HowToPanel.activeInHierarchy == false)
+        {
+            HowToPanel.SetActive(true);
+        }
+        else
+        {
+            HowToPanel.SetActive(false);
+            foreach (GameObject p in HowToPages)
+            {
+                p.SetActive(false);
+            }
+        }
+    }
+
+    public void OpenURL(string url)
+    {
+        Application.OpenURL(url);
+    }
+
+    public void OpenPage(int page)
+    {
+        foreach(GameObject p in HowToPages)
+        {
+            p.SetActive(false);
+        }
+        HowToPages[page].SetActive(true);
     }
 
     public void Exit()

@@ -22,7 +22,7 @@ public class Treasure : MonoBehaviour
     public bool Active;
     public bool GoldLock;
 
-    public enum ItemType {LifeUP, LifeRecovery, EnergyUP, AddUpgradePoint }
+    public enum ItemType {LifeUP, LifeRecovery, EnergyUP, AddUpgradePoint, Money, Attack, Defense, Recovery}
 
     public ItemType Item;
     public float Cost;
@@ -81,7 +81,7 @@ public class Treasure : MonoBehaviour
             ChestGameobject.color = new Color32(255, 255, 255, 255);
             if (Active)
             {
-                BackgroundGameobject.color = new Color32(165, 93, 255, 255);
+                BackgroundGameobject.color = new Color32(0, 128, 255, 255);
                 if (Item == ItemType.LifeUP)
                 {
                     UpperTextGameobject.text = "+" + Value + " " + "Life";
@@ -96,9 +96,17 @@ public class Treasure : MonoBehaviour
                 }
                 if (Item == ItemType.AddUpgradePoint)
                 {
-                    UpperTextGameobject.text = "+" + Value + " " + "Upgr. Points";
+                    UpperTextGameobject.text = "+" + Value + " " + "Upgr.";
                 }
-                if(alreadyClaimed)
+                if (Item == ItemType.Money)
+                {
+                    UpperTextGameobject.text = "+" + Value + " " + "$";
+                }
+                if (Item == ItemType.Attack)
+                {
+                    UpperTextGameobject.text = "x2 Atk.";
+                }
+                if (alreadyClaimed)
                 {
                     BackgroundGameobject.color = new Color32(101, 56, 156, 255);
                     gameObject.GetComponent<Button>().interactable = false;
@@ -191,7 +199,15 @@ public class Treasure : MonoBehaviour
             }
             if (Item == ItemType.AddUpgradePoint)
             {
-                PLR.UpgradePoints = Value;
+                PLR.UpgradePoints += Value;
+            }
+            if (Item == ItemType.Money)
+            {
+                PLR.Money += Value;
+            }
+            if (Item == ItemType.Attack)
+            {
+                PLR.MaxAttack += PLR.MaxAttack;
             }
             alreadyClaimed = true;
         }

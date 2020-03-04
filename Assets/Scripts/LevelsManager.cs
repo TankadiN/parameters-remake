@@ -9,28 +9,25 @@ public class LevelsManager : MonoBehaviour
 {
     public static LevelsManager LM;
 
-    public bool[] LevelsUnlocked;
-    public List<Button> Levels;
+    public List<LevelID> Levels;
 
     void Start()
     {
         GlobalLevels.GL.Levels[0] = true;
         LM = this;
-}
+        UpdateLevels();
+    }
 
     void Update()
     {
-        for(int i = 0; i <= Levels.Count -1; i++)
+
+    }
+
+    public void UpdateLevels()
+    {
+        foreach(LevelID level in Levels)
         {
-            LevelsUnlocked[i] = GlobalLevels.GL.Levels[i];
-            if (LevelsUnlocked[i] == true)
-            {
-                Levels[i].interactable = true;
-            }
-            else
-            {
-                Levels[i].interactable = false;
-            }
+            level.CheckLevel();
         }
     }
 }
