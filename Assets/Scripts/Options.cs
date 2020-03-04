@@ -25,7 +25,7 @@ public class Options : MonoBehaviour
         AudioSlider.value = db;
         FullscreenToggle.isOn = Screen.fullScreen;
 
-        resolutions = Screen.resolutions;
+        /*resolutions = Screen.resolutions;
 
         ResolutionDD.ClearOptions();
 
@@ -45,7 +45,7 @@ public class Options : MonoBehaviour
         }
         ResolutionDD.AddOptions(options);
         ResolutionDD.value = currentResolutionIndex;
-        ResolutionDD.RefreshShownValue();
+        ResolutionDD.RefreshShownValue();*/
     }
 
     public void SetResolution(int resolutionIndex)
