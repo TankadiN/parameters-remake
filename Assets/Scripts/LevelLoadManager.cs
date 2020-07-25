@@ -128,6 +128,7 @@ public class LevelLoadManager : MonoBehaviour
                 go.GetComponent<RectTransform>().sizeDelta = new Vector2(p.rectWidth, p.rectHeight);
 
                 go.GetComponent<Treasure>().Cost = p.Cost;
+                go.GetComponent<Treasure>().Value = p.Value;
                 go.GetComponent<Treasure>().condition = p.Condition;
                 go.GetComponent<Treasure>().conditionValue = p.ConditionValue;
 

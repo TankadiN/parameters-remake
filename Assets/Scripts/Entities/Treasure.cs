@@ -108,7 +108,7 @@ public class Treasure : MonoBehaviour
                 }
                 if (alreadyClaimed)
                 {
-                    BackgroundGameobject.color = new Color32(101, 56, 156, 255);
+                    BackgroundGameobject.color = new Color32(0, 128, 180, 255);
                     gameObject.GetComponent<Button>().interactable = false;
                 }
             }
@@ -169,7 +169,7 @@ public class Treasure : MonoBehaviour
                     if (Item == ItemType.AddUpgradePoint)
                     {
                         PLR.Money -= Cost;
-                        PLR.UpgradePoints = Value;
+                        PLR.UpgradePoints += Value;
                     }
                 }
             }

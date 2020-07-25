@@ -114,11 +114,11 @@ public class Player : MonoBehaviour
         }
         if (CurrentAttack <= MaxAttack)
         {
-            CurrentAttack += Time.deltaTime;
+            CurrentAttack += Time.deltaTime * RCV_Multiplier;
         }
         if (CurrentDefense <= MaxDefense)
         {
-            CurrentDefense += Time.deltaTime;
+            CurrentDefense += Time.deltaTime * RCV_Multiplier;
         }
         if(CurrentComboTimer >= 0)
         {
@@ -144,7 +144,7 @@ public class Player : MonoBehaviour
         //Gameplay Mechanics
         if(CurrentExperience > NeededExperience)
         {
-            float EXP_VALUE_UP = Random.Range(250, 500);
+            float EXP_VALUE_UP = Random.Range(25, 100);
             OL.AddLog("<color=#FF00FF>LEVEL UP!</color> <color=#FF0000>+3 Upgrade Points</color>");
             CurrentExperience = 0;
             NeededExperience += EXP_VALUE_UP;

@@ -107,6 +107,10 @@ public class Enemy : MonoBehaviour
             PLR.AddCOMBO();
             float DEF_Multiplier = Mathf.Round(PLR.CurrentDefense / 2);
             float ENEMY_ATTACK = EnemyAttack - DEF_Multiplier;
+            if(ENEMY_ATTACK < 0)
+            {
+                ENEMY_ATTACK = 0;
+            }
             PLR.CurrentHealth -= ENEMY_ATTACK;
             OL.AddLog("<color=#FF0000>" + ENEMY_ATTACK + " damage taken!</color>");
             if (CurrentHealth < 0)
