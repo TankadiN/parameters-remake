@@ -5,12 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public static PauseMenu inst;
+
     public static bool GameIsPaused = false;
     public static bool ExitConfirmation = false;
     public static bool OptionsOpen = false;
     public GameObject PausePanel;
     public GameObject ConfirmExitPanel;
     public GameObject OptionsPanel;
+
+    void Awake()
+    {
+        inst = this;
+    }
 
     void Update()
     {
@@ -71,6 +78,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Exit()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 }

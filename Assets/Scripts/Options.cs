@@ -9,23 +9,26 @@ public class Options : MonoBehaviour
 {
     [Header("Music")]
     public AudioMixer AudioMixer;
-    public TMP_Text dbText;
-    public GameObject audioWarning;
+    public TMP_Text percText;
     public Slider AudioSlider;
-    public float db;
     [Header("Screen")]
     public TMP_Dropdown ResolutionDD;
     public Toggle FullscreenToggle;
+
+    private float audioMusic;
+    private bool resBlock;
 
     Resolution[] resolutions;
 
     private void Start()
     {
-        AudioMixer.GetFloat("MasterVolume", out db);
-        AudioSlider.value = db;
+        AudioMixer.GetFloat("MasterVolume", out audioMusic);
+        AudioSlider.value = audioMusic;
         FullscreenToggle.isOn = Screen.fullScreen;
 
-        /*resolutions = Screen.resolutions;
+        resBlock = true;
+
+        resolutions = Screen.resolutions;
 
         ResolutionDD.ClearOptions();
 
@@ -37,21 +40,26 @@ public class Options : MonoBehaviour
             string option = resolutions[i].width + "x" + resolutions[i].height + " @" + resolutions[i].refreshRate;
             options.Add(option);
 
-            if (resolutions[i].width == Screen.currentResolution.width &&
-                resolutions[i].height == Screen.currentResolution.height)
+            if (resolutions[i].width == Screen.width &&
+                resolutions[i].height == Screen.height)
             {
                 currentResolutionIndex = i;
             }
         }
         ResolutionDD.AddOptions(options);
         ResolutionDD.value = currentResolutionIndex;
-        ResolutionDD.RefreshShownValue();*/
+        ResolutionDD.RefreshShownValue();
+
+        resBlock = false;
     }
 
     public void SetResolution(int resolutionIndex)
     {
-        Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        if(!resBlock)
+        {
+            Resolution resolution = resolutions[resolutionIndex];
+            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        }
     }
 
     public void SetVolume(float volume)
@@ -71,15 +79,9 @@ public class Options : MonoBehaviour
 
     private void Update()
     {
-        AudioMixer.GetFloat("MasterVolume", out db);
-        dbText.text = db + " db";
-        if(db >= 5)
-        {
-            audioWarning.SetActive(true);
-        }
-        else
-        {
-            audioWarning.SetActive(false);
-        }
+        AudioMixer.GetFloat("MasterVolume", out audioMusic);
+
+        float calcPercent = (AudioSlider.value / AudioSlider.minValue * -100) + 100;
+        percText.text = calcPercent.ToString("0") + "%";
     }
 }

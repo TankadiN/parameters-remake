@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c7f888198b7824c971f28883c2a36d, type: 3}
+  m_Name: ParametersPoster
+  m_EditorClassIdentifier: 
+  key: b18b1d4e38fb17d896e36b103d707c8a
+  token: 17488b41754e22ac097b9ad347026d9ba3cf7b0d737309085fce77d7ab92d127
+  boardId: 5f280e11a438557f3772f2c7
+  cardLists:
+  - name: Bugs
+    id: 5f280e11a438557f3772f2c8
+  cardLabels:
+  - name: Game Breaking Bug
+    id: 5f280e117669b225496b58d4
+  - name: Minor Bug
+    id: 5f280e117669b225496b58ce

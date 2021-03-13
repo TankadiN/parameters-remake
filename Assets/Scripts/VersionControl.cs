@@ -6,20 +6,23 @@ using System;
 
 public class VersionControl : MonoBehaviour
 {
+    public string versionForeText;
+    public string versionBackText;
     public TMP_Text GameVersionText;
     public TMP_Text UnityVersionText;
     public TMP_Text TesterDataText;
+    public GameObject TesterDataPanel;
     public bool useTesterData;
 
     void Start()
     {
         Debug.Log("Version: " + Application.version);
         Debug.Log("Unity: " + Application.unityVersion);
-        GameVersionText.text = "Early Access v." + Application.version;
+        GameVersionText.text = versionForeText + " v." + Application.version + " " + versionBackText;
         UnityVersionText.text = "Unity " + Application.unityVersion + " Personal";
         if (useTesterData)
         {
-            TesterDataText.gameObject.SetActive(true);
+            TesterDataPanel.SetActive(true);
             Debug.Log("Machine Name: " + Environment.MachineName);
             Debug.Log("OS Version: " + Environment.OSVersion + " / " + SystemInfo.operatingSystem);
             Debug.Log("User Name: " + Environment.UserName);
