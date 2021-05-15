@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 namespace GameJolt.Demo.UI {
-	public class UserInfoBox : MonoBehaviour {
+	public class GamejoltUserInfo : MonoBehaviour {
 		public Image Avatar;
         public Sprite GuestImage;
 		public TMP_Text Name;

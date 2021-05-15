@@ -19,10 +19,11 @@ public class MainMenu : MonoBehaviour
     public GameObject CreditsPanel;
     [Header("Gamejolt")]
     public GameObject GamejoltPanel;
+    [Header("Discord")]
+    public GameObject DiscordPanel;
     [Header("Warning")]
     public GameObject WarningPanel;
-
-
+    
     public static MainMenu MM;
 
     private void Start()
@@ -30,6 +31,8 @@ public class MainMenu : MonoBehaviour
         MM = this;
         AudioManager.instance.StopAll();
         AudioManager.instance.Play("MainMenu");
+
+        DiscordController.instance.SetRichPresence("Main Menu", "Just Vibing...");
     }
 
     private void Update()
@@ -101,6 +104,19 @@ public class MainMenu : MonoBehaviour
             GamejoltPanel.SetActive(false);
         }
     }
+
+    public void Discord()
+    {
+        if (DiscordPanel.activeInHierarchy == false)
+        {
+            DiscordPanel.SetActive(true);
+        }
+        else
+        {
+            DiscordPanel.SetActive(false);
+        }
+    }
+
     public void Warning()
     {
         if (WarningPanel.activeInHierarchy == false)
@@ -127,6 +143,16 @@ public class MainMenu : MonoBehaviour
                 p.SetActive(false);
             }
         }
+    }
+
+    public void DebugDiscordRP()
+    {
+        DiscordController.instance.SetRichPresence("Hippity Hoppity", "get off my property");
+    }
+
+    public void DebugClearDiscordRP()
+    {
+        DiscordController.instance.DisableDiscordRichPresence();
     }
 
     public void OpenURL(string url)

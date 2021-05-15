@@ -18,6 +18,8 @@ public class TrelloUI : MonoBehaviour
 	[SerializeField]
 	private TMP_InputField cardName;
     [SerializeField]
+    private Toggle useDiscord;
+    [SerializeField]
     private TMP_InputField playerName;
     [SerializeField]
 	private TMP_InputField cardDesc;
@@ -37,7 +39,13 @@ public class TrelloUI : MonoBehaviour
     private Texture2D screenshot;
 	private bool noLabels = false;
 
-	private void Start()
+    [Header("Discord Objects")]
+    [SerializeField]
+    private RawImage avatarImage;
+    [SerializeField]
+    private TMP_Text usernameText;
+
+    private void Start()
 	{
 		cardList.AddOptions(GetDropdownOptions(trelloPoster.TrelloCardListOptions));
 		TrelloCardOption[] cardLabels = trelloPoster.TrelloCardLabelOptions;
@@ -107,6 +115,27 @@ public class TrelloUI : MonoBehaviour
     private void Update()
     {
         screenshotDisplay.texture = screenshot;
+    }
+
+    public void GetUser()
+    {
+        avatarImage.texture = DiscordManager.current.CurrentUser.avatar;
+        usernameText.text = DiscordManager.current.CurrentUser.username + DiscordManager.current.CurrentUser.discrim;
+    }
+
+    public void UseDiscordUsername()
+    {
+        if (DiscordManager.current.CurrentUser != null)
+        {
+            GetUser();
+            playerName.gameObject.SetActive(useDiscord.isOn ? false : true);
+            playerName.text = useDiscord.isOn ? DiscordManager.current.CurrentUser.username + DiscordManager.current.CurrentUser.discrim : "";
+        }
+        else
+        {
+            Debug.LogError("You aren't logged in on Discord!");
+            useDiscord.isOn = false;
+        }
     }
 
     public void ResetUI()
