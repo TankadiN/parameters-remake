@@ -59,6 +59,7 @@ public class GoalChecker : MonoBehaviour
         }
         tableID = GlobalData.GD.tableID;
         levelIDToUnlock = GlobalData.GD.levelID + 1;
+        DiscordController.instance.SetRichPresence("In Game (" + GlobalData.GD.levelString + ")", GlobalData.GD.Mode.ToString());
     }
 
     public void GetPlaces()

@@ -51,7 +51,7 @@ namespace Trello
 		private UnityWebRequest BuildAuthenticatedWebRequest(string baseUrl, WWWForm postBody)
 		{
 			UnityWebRequest webRequest = UnityWebRequest.Post(baseUrl + "?" + "key=" + key + "&token=" + token, postBody);
-			webRequest.chunkedTransfer = false;
+			//webRequest.chunkedTransfer = false;
 			return webRequest;
 		}
 

@@ -8,9 +8,13 @@ public class DiscordController : MonoBehaviour
 
     public DiscordPresence presence;
 
+    public DiscordPresence customPresence;
+
     public DiscordPresence emptyPresence;
 
     public bool discordRP;
+
+    public bool customRP;
 
     public long cur_time;
 
@@ -40,7 +44,8 @@ public class DiscordController : MonoBehaviour
 
     private void Start()
     {
-
+        emptyPresence.startTime = cur_time;
+        customPresence.startTime = cur_time;
     }
 
     public void SetRichPresence(string newDetails, string newState)
@@ -73,26 +78,19 @@ public class DiscordController : MonoBehaviour
     {
         if (discordRP)
         {
-           DiscordManager.current.SetPresence(presence);
+            if (customRP)
+            {
+                DiscordManager.current.SetPresence(customPresence);
+            }
+            else
+            {
+                DiscordManager.current.SetPresence(presence);
+            }
         }
         else
         {
             DiscordManager.current.SetPresence(emptyPresence);
         }
-    }
-
-    public void DisableDiscordRichPresence()
-    {
-        if(discordRP)
-        {
-            discordRP = false;
-        }
-        else
-        {
-            discordRP = true;
-        }
-
-        UpdatePresence();
     }
 
     // Update is called once per frame

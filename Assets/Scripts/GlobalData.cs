@@ -14,7 +14,13 @@ public class GlobalData : MonoBehaviour
     public int minutes;
     public int seconds;
 
-    public bool isTimeAttack;
+    public enum Modes
+    {
+        Normal,
+        TimeAttack
+    }
+
+    public Modes Mode;
 
     void Awake()
     {

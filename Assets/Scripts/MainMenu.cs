@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
     [Header("Debug")]
-    public bool EnableDebugging;
     public GameObject Dev;
+    public RawImage avatarImage;
+    public TMP_Text username;
     [Header("Play")]
     public GameObject PlayPanel;
     [Header("HowToPlay")]
@@ -26,8 +29,12 @@ public class MainMenu : MonoBehaviour
     
     public static MainMenu MM;
 
+    private float timer = 3f;
+    private bool actOnce = false;
+
     private void Start()
     {
+        Dev.SetActive(false);
         MM = this;
         AudioManager.instance.StopAll();
         AudioManager.instance.Play("MainMenu");
@@ -35,15 +42,27 @@ public class MainMenu : MonoBehaviour
         DiscordController.instance.SetRichPresence("Main Menu", "Just Vibing...");
     }
 
-    private void Update()
+    private void CheckDev()
     {
-        if (EnableDebugging)
+        if (DiscordManager.current.isInitialized == true && DiscordManager.current.CurrentUser.ID == 151701569543340032)
         {
             Dev.SetActive(true);
+            avatarImage.texture = DiscordManager.current.CurrentUser.avatar;
+            username.text = DiscordManager.current.CurrentUser.username + DiscordManager.current.CurrentUser.discrim + " <color=red>[Dev]</color>";
         }
-        if (!EnableDebugging)
+    }
+
+    private void Update()
+    {
+        if(timer >= 0f && !actOnce)
         {
-            Dev.SetActive(false);
+            timer -= Time.deltaTime;
+        }
+        else
+        {
+            CheckDev();
+            actOnce = true;
+            timer = 0f;
         }
     }
 
@@ -62,11 +81,6 @@ public class MainMenu : MonoBehaviour
         {
             PlayPanel.SetActive(false);
         }
-    }
-
-    public void EnableDebug()
-    {
-        EnableDebugging = true;
     }
 
     public void Options()
@@ -143,16 +157,6 @@ public class MainMenu : MonoBehaviour
                 p.SetActive(false);
             }
         }
-    }
-
-    public void DebugDiscordRP()
-    {
-        DiscordController.instance.SetRichPresence("Hippity Hoppity", "get off my property");
-    }
-
-    public void DebugClearDiscordRP()
-    {
-        DiscordController.instance.DisableDiscordRichPresence();
     }
 
     public void OpenURL(string url)

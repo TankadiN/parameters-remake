@@ -55,7 +55,7 @@ public class Options : MonoBehaviour
 
     public void SetResolution(int resolutionIndex)
     {
-        if(!resBlock)
+        if (!resBlock)
         {
             Resolution resolution = resolutions[resolutionIndex];
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
@@ -75,6 +75,12 @@ public class Options : MonoBehaviour
     string ResToString(Resolution res)
     {
         return res.width + " x " + res.height + " @" + res.refreshRate;
+    }
+
+    public void SwitchDiscordPresence(bool toggle)
+    {
+        DiscordController.instance.discordRP = toggle;
+        DiscordController.instance.UpdatePresence();
     }
 
     private void Update()

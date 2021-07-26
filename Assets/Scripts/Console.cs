@@ -95,8 +95,6 @@ public class Console : MonoBehaviour
                         "\n" +
                         "cheats - A command that enables cheat commands.\n" +
                         "\n" +
-                        "<color=#FF8000>enabledebugpanel - Enable debug tools.</color>\n" +
-                        "\n" +
                         "<color=#FF00FF>add [ITEM] (VALUE) - Add specified value to parameter.</color>\n" +
                         "[money, skeys, gkeys, upgradepoints]\n" +
                         "\n" +
@@ -121,20 +119,6 @@ public class Console : MonoBehaviour
                     }
                     break;
                 #endregion Cheats
-
-                #region Enabledebugpanel
-                case "enabledebugpanel":
-                    if (SceneManager.GetActiveScene().name == "MainMenu")
-                    {
-                        MainMenu.MM.EnableDebug();
-                        OL.AddCommandLog("Debug panel enabled.");
-                    }
-                    else
-                    {
-                        OL.AddCommandLog("<color=#FF0000>ERROR: Invalid Scene.</color>");
-                    }
-                    break;
-                #endregion Enabledebugpanel
 
                 #region Add
                 case "add":

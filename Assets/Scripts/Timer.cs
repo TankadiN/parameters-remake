@@ -29,7 +29,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GlobalData.GD.isTimeAttack)
+        if (GlobalData.GD.Mode == GlobalData.Modes.TimeAttack)
         {
             Active = true;
             Minutes = GlobalData.GD.minutes;

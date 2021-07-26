@@ -18,7 +18,7 @@ public class VersionControl : MonoBehaviour
     {
         Debug.Log("Version: " + Application.version);
         Debug.Log("Unity: " + Application.unityVersion);
-        GameVersionText.text = versionForeText + " v." + Application.version + " " + versionBackText;
+        GameVersionText.text = versionForeText + "\n" + " v." + Application.version + " " + versionBackText;
         UnityVersionText.text = "Unity " + Application.unityVersion + " Personal";
         if (useTesterData)
         {

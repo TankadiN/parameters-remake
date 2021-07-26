@@ -53,11 +53,10 @@ public class LevelID : MonoBehaviour
     {
         GlobalData.GD.levelString = levelName;
         GlobalData.GD.tableID = tableID;
-        if(CustomModes.CM.isTimeAttack)
+        if(GlobalData.GD.Mode == GlobalData.Modes.TimeAttack)
         {
             GlobalData.GD.minutes = Minutes;
             GlobalData.GD.seconds = Seconds;
-            GlobalData.GD.isTimeAttack = true;
         }
         SceneManager.LoadScene(1);
     }
