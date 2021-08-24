@@ -217,8 +217,7 @@ MonoBehaviour:
   m_text: 999/999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: adbcb48edbdc9a34381415406b7c9968, type: 2}
-  m_sharedMaterial: {fileID: 1453732862129510919, guid: adbcb48edbdc9a34381415406b7c9968,
-    type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 51f447d4d1e1159468f9bf613f4ec36f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -414,12 +413,16 @@ MonoBehaviour:
   EnemyAttack: 30
   MinExp: 50
   MaxExp: 150
+  Exp: 
   MinGold: 50
   MaxGold: 200
+  Gold: 
   MinSKeys: 1
   MaxSKeys: 2
+  SKeys: 
   MinGKeys: 0
   MaxGKeys: 0
+  GKeys: 
 --- !u!1 &6672811696417317820
 GameObject:
   m_ObjectHideFlags: 0

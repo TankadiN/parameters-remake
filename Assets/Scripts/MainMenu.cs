@@ -38,13 +38,13 @@ public class MainMenu : MonoBehaviour
         MM = this;
         AudioManager.instance.StopAll();
         AudioManager.instance.Play("MainMenu");
-
-        DiscordController.instance.SetRichPresence("Main Menu", "Just Vibing...");
+        //DiscordController.instance.SetRichPresence("Main Menu", "Just Vibing...");
+        DiscordController.instance.SetRichPresence("Hippity hoppity", "get off my property");
     }
 
     private void CheckDev()
     {
-        if (DiscordManager.current.isInitialized == true && DiscordManager.current.CurrentUser.ID == 151701569543340032)
+        if (DiscordManager.current.isInitialized && DiscordManager.current.CurrentUser.ID == 151701569543340032)
         {
             Dev.SetActive(true);
             avatarImage.texture = DiscordManager.current.CurrentUser.avatar;

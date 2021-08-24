@@ -22,20 +22,45 @@ public class Place : MonoBehaviour
     public float ProgressNeeded;
     public float EnergyNeeded;
     [Header("Experience & Gold Ongoing")]
-    public float MinExpOngoing;
-    public float MaxExpOngoing;
+    public float MinimalExpOngoing;
+    public float MaximumExpOngoing;
+    public string ExpOngoing;
     [Space(10)]
-    public float MinGoldOngoing;
-    public float MaxGoldOngoing;
+
+    public float MinimalGoldOngoing;
+    public float MaximumGoldOngoing;
+    public string GoldOngoing;
     [Header("Gold Completed")]
-    public float MinGoldCompleted;
-    public float MaxGoldCompleted;
+    public float MinimalGoldCompleted;
+    public float MaximumGoldCompleted;
+    public string GoldCompleted;
+
+    private float minExpOng, maxExpOng;
+    private float minGoldOng, maxGoldOng;
+    private float minGoldComp, maxGoldComp;
+
 
     void Start()
     {
         ProgressBar.color = new Color32(255, 0, 255, 255);
         OL = GameObject.Find("GameManager").GetComponent<OutputLog>();
         PLR = GameObject.Find("GameManager").GetComponent<Player>();
+
+        //ExpOngoing = MinimalExpOngoing + "/" + MaximumExpOngoing;
+        //GoldOngoing = MinimalGoldOngoing + "/" + MaximumGoldOngoing;
+        //GoldCompleted = MinimalGoldCompleted + "/" + MaximumGoldCompleted;
+
+        string[] splitArrExpOng = ExpOngoing.Split(char.Parse("/"));
+        minExpOng = float.Parse(splitArrExpOng[0]);
+        maxExpOng = float.Parse(splitArrExpOng[1]);
+
+        string[] splitArrGoldOng = GoldOngoing.Split(char.Parse("/"));
+        minGoldOng = float.Parse(splitArrGoldOng[0]);
+        maxGoldOng = float.Parse(splitArrGoldOng[1]);
+
+        string[] splitArrGoldComp = GoldCompleted.Split(char.Parse("/"));
+        minGoldComp = float.Parse(splitArrGoldComp[0]);
+        maxGoldComp = float.Parse(splitArrGoldComp[1]);
     }
 
     void Update()
@@ -73,14 +98,14 @@ public class Place : MonoBehaviour
                 {
                     if (Completed)
                     {
-                        float GOLD_GAIN = Mathf.Round(Random.Range(MinGoldCompleted, MaxGoldCompleted));
+                        float GOLD_GAIN = Mathf.Round(Random.Range(MinimalGoldCompleted, MaximumGoldCompleted));
                         PLR.Money += GOLD_GAIN;
                         OL.AddLog("<color=#FFFF00>Got " + GOLD_GAIN + "$ !</color>");
                     }
                     else
                     {
-                        float EXP_GAIN = Mathf.Round(Random.Range(MinExpOngoing, MaxExpOngoing));
-                        float GOLD_GAIN = Mathf.Round(Random.Range(MinGoldOngoing, MaxGoldOngoing));
+                        float EXP_GAIN = Mathf.Round(Random.Range(MinimalExpOngoing, MaximumExpOngoing));
+                        float GOLD_GAIN = Mathf.Round(Random.Range(MinimalGoldOngoing, MaximumGoldOngoing));
                         CurrentProgress++;
                         PLR.CurrentExperience += EXP_GAIN;
                         PLR.Money += GOLD_GAIN;

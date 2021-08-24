@@ -185,30 +185,33 @@ public class Treasure : MonoBehaviour
 
         if (treasureMode == TreasureType.Free)
         {
-            if (Item == ItemType.LifeUP)
+            switch(Item)
             {
-                PLR.MaxHealth += Value;
+                case ItemType.LifeUP:
+                    PLR.MaxHealth += Value;
+                    break;
+
+                case ItemType.LifeRecovery:
+                    PLR.CurrentHealth = PLR.MaxHealth;
+                    break;
+
+                case ItemType.EnergyUP:
+                    PLR.MaxEnergy += Value;
+                    break;
+
+                case ItemType.AddUpgradePoint:
+                    PLR.UpgradePoints += Value;
+                    break;
+
+                case ItemType.Money:
+                    PLR.Money += Value;
+                    break;
+
+                case ItemType.Attack:
+                    PLR.MaxAttack += Value;
+                    break;
             }
-            if (Item == ItemType.LifeRecovery)
-            {
-                PLR.CurrentHealth = PLR.MaxHealth;
-            }
-            if (Item == ItemType.EnergyUP)
-            {
-                PLR.MaxEnergy += Value;
-            }
-            if (Item == ItemType.AddUpgradePoint)
-            {
-                PLR.UpgradePoints += Value;
-            }
-            if (Item == ItemType.Money)
-            {
-                PLR.Money += Value;
-            }
-            if (Item == ItemType.Attack)
-            {
-                PLR.MaxAttack += PLR.MaxAttack;
-            }
+
             alreadyClaimed = true;
         }
     }

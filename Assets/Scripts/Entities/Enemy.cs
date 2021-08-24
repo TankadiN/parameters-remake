@@ -28,15 +28,32 @@ public class Enemy : MonoBehaviour
     [Header("Experience & Gold & Keys")]
     public float MinExp;
     public float MaxExp;
+    public string Exp;
     [Space(10)]
     public float MinGold;
     public float MaxGold;
+    public string Gold;
     [Space(10)]
     public float MinSKeys;
     public float MaxSKeys;
+    public string SKeys;
     [Space(10)]
     public float MinGKeys;
     public float MaxGKeys;
+    public string GKeys;
+
+
+    private float minExp;
+    private float maxExp;
+
+    private float minGold;
+    private float maxGold;
+
+    private float minSKeys;
+    private float maxSKeys;
+
+    private float minGKeys;
+    private float maxGKeys;
 
     private Color BossColor = new Color(128, 0, 0, 255);
 
@@ -46,6 +63,27 @@ public class Enemy : MonoBehaviour
         CurrentHealth = MaxHealth;
         OL = GameObject.Find("GameManager").GetComponent<OutputLog>();
         PLR = GameObject.Find("GameManager").GetComponent<Player>();
+
+        //Exp = MinExp + "/" + MaxExp;
+        //Gold = MinGold + "/" + MaxGold;
+        //SKeys = MinSKeys + "/" + MaxSKeys;
+        //GKeys = minGKeys + "/" + MaxGKeys;
+
+        string[] splitArrExp = Exp.Split(char.Parse("/"));
+        minExp = float.Parse(splitArrExp[0]);
+        maxExp = float.Parse(splitArrExp[1]);
+
+        string[] splitArrGold = Gold.Split(char.Parse("/"));
+        minGold = float.Parse(splitArrGold[0]);
+        maxGold = float.Parse(splitArrGold[1]);
+
+        string[] splitArrSKeys = SKeys.Split(char.Parse("/"));
+        minSKeys = float.Parse(splitArrSKeys[0]);
+        maxSKeys = float.Parse(splitArrSKeys[1]);
+
+        string[] splitArrGKeys = GKeys.Split(char.Parse("/"));
+        minGKeys = float.Parse(splitArrGKeys[0]);
+        maxGKeys = float.Parse(splitArrGKeys[1]);
     }
 
     void Update()

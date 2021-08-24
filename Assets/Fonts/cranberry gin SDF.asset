@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hashCode: 1833521105
   material: {fileID: 1453732862129510919}
-  materialHashCode: 1707003322
+  materialHashCode: 758849361
   m_Version: 1.1.0
   m_SourceFontFileGUID: a4822db86bf7d4b4a994afffef2767bc
   m_SourceFontFile_EditorRef: {fileID: 0}
   m_SourceFontFile: {fileID: 0}
   m_AtlasPopulationMode: 0
   m_FaceInfo:
+    m_FaceIndex: 0
     m_FamilyName: Cranberry Gin
     m_StyleName: Regular
     m_PointSize: 86
@@ -1719,6 +1720,8 @@ MonoBehaviour:
   m_AtlasTextures:
   - {fileID: 3345570127036988294}
   m_AtlasTextureIndex: 0
+  m_IsMultiAtlasTexturesEnabled: 0
+  m_ClearDynamicDataOnBuild: 0
   m_UsedGlyphRects:
   - m_X: 0
     m_Y: 0
@@ -2385,7 +2388,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: cranberry gin SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ShaderKeywords: UNDERLAY_ON
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -2497,6 +2500,7 @@ Texture2D:
   m_MipCount: 1
   m_IsReadable: 1
   m_IgnoreMasterTextureLimit: 0
+  m_IsPreProcessed: 0
   m_StreamingMipmaps: 0
   m_StreamingMipmapsPriority: 0
   m_AlphaIsTransparency: 0

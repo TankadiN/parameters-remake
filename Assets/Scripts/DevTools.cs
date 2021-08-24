@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Diagnostics;
 
 public class DevTools : MonoBehaviour
 {
@@ -61,6 +62,11 @@ public class DevTools : MonoBehaviour
 
         }
         DiscordController.instance.UpdatePresence();
+    }
+
+    public void ForceCrash()
+    {
+        Utils.ForceCrash(ForcedCrashCategory.FatalError);
     }
 
     // Update is called once per frame
