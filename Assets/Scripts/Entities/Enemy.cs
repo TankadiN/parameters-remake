@@ -26,20 +26,12 @@ public class Enemy : MonoBehaviour
     public float MaxHealth;
     public float EnemyAttack;
     [Header("Experience & Gold & Keys")]
-    public float MinExp;
-    public float MaxExp;
     public string Exp;
     [Space(10)]
-    public float MinGold;
-    public float MaxGold;
     public string Gold;
     [Space(10)]
-    public float MinSKeys;
-    public float MaxSKeys;
     public string SKeys;
     [Space(10)]
-    public float MinGKeys;
-    public float MaxGKeys;
     public string GKeys;
 
 
@@ -153,10 +145,10 @@ public class Enemy : MonoBehaviour
             OL.AddLog("<color=#FF0000>" + ENEMY_ATTACK + " damage taken!</color>");
             if (CurrentHealth < 0)
             {
-                float EXP_GAIN = Mathf.Round(Random.Range(MinExp, MaxExp));
-                float GOLD_GAIN = Mathf.Round(Random.Range(MinGold, MaxGold));
-                float SKEYS_GAIN = Mathf.Round(Random.Range(MinSKeys, MaxSKeys));
-                float GKEYS_GAIN = Mathf.Round(Random.Range(MinGKeys, MaxGKeys));
+                float EXP_GAIN = Mathf.Round(Random.Range(minExp, maxExp));
+                float GOLD_GAIN = Mathf.Round(Random.Range(minGold, maxGold));
+                float SKEYS_GAIN = Mathf.Round(Random.Range(minSKeys, maxSKeys));
+                float GKEYS_GAIN = Mathf.Round(Random.Range(minGKeys, maxGKeys));
                 Dead = true;
                 PLR.CurrentExperience += EXP_GAIN;
                 PLR.Money += GOLD_GAIN;
