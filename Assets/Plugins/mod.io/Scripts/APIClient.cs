@@ -392,7 +392,7 @@ namespace ModIO
                 #if DEBUG
                 if(APIClient.logAllRequests)
                 {
-                    if(webRequest.isNetworkError || webRequest.isHttpError)
+                    if(webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
                     {
                         WebRequestError.LogAsWarning(WebRequestError.GenerateFromWebRequest(webRequest));
                     }
@@ -431,7 +431,7 @@ namespace ModIO
                 }
                 #endif
 
-                if(webRequest.isNetworkError || webRequest.isHttpError)
+                if(webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     if(errorCallback != null)
                     {

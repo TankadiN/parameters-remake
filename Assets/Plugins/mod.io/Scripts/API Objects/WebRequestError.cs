@@ -103,7 +103,7 @@ namespace ModIO
         public static WebRequestError GenerateFromWebRequest(UnityWebRequest webRequest)
         {
             UnityEngine.Debug.Assert(webRequest != null);
-            UnityEngine.Debug.Assert(webRequest.isNetworkError || webRequest.isHttpError);
+            UnityEngine.Debug.Assert(webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError);
 
             WebRequestError error = new WebRequestError();
             error.webRequest = webRequest;

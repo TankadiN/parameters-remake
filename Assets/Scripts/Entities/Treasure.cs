@@ -38,9 +38,10 @@ public class Treasure : MonoBehaviour
     {
         PLR = GameObject.Find("GameManager").GetComponent<Player>();
         OL = GameObject.Find("GameManager").GetComponent<OutputLog>();
+        UpdateVisual();
     }
 
-    private void Update()
+    public void UpdateVisual()
     {
         if (treasureMode == TreasureType.Paid)
         {
@@ -50,18 +51,19 @@ public class Treasure : MonoBehaviour
             {
                 LowerTextGameobject.text = "Life++";
             }
-            if (Item == ItemType.LifeRecovery)
+            else if (Item == ItemType.LifeRecovery)
             {
                 LowerTextGameobject.text = "Life Rcv.";
             }
-            if (Item == ItemType.EnergyUP)
+            else if (Item == ItemType.EnergyUP)
             {
                 LowerTextGameobject.text = "Energy++";
             }
-            if (Item == ItemType.AddUpgradePoint)
+            else if (Item == ItemType.AddUpgradePoint)
             {
                 LowerTextGameobject.text = "Add Upgr.";
             }
+            
             if (GoldLock)
             {
                 BackgroundGameobject.color = new Color32(0, 0, 0, 255);
@@ -73,36 +75,36 @@ public class Treasure : MonoBehaviour
                 LockGameobject.color = new Color32(255, 255, 255, 0);
             }
         }
-        if(treasureMode == TreasureType.Free)
+        if (treasureMode == TreasureType.Free)
         {
-            BackgroundGameobject.color = new Color32(0, 0, 0, 255);
-            LockGameobject.color = new Color32(255, 255, 255, 0);
-            LowerTextGameobject.text = "";
-            ChestGameobject.color = new Color32(255, 255, 255, 255);
             if (Active)
             {
-                BackgroundGameobject.color = new Color32(0, 128, 255, 255);
+                if(!alreadyClaimed)
+                {
+                    BackgroundGameobject.color = new Color32(0, 128, 255, 255);
+                }
+                //BackgroundGameobject.color = new Color32(0, 128, 255, 255);
                 if (Item == ItemType.LifeUP)
                 {
                     UpperTextGameobject.text = "+" + Value + " " + "Life";
                 }
-                if (Item == ItemType.LifeRecovery)
+                else if (Item == ItemType.LifeRecovery)
                 {
                     UpperTextGameobject.text = "+" + Value + " " + "Life Rcv.";
                 }
-                if (Item == ItemType.EnergyUP)
+                else if (Item == ItemType.EnergyUP)
                 {
                     UpperTextGameobject.text = "+" + Value + " " + "Energy";
                 }
-                if (Item == ItemType.AddUpgradePoint)
+                else if (Item == ItemType.AddUpgradePoint)
                 {
                     UpperTextGameobject.text = "+" + Value + " " + "Upgr.";
                 }
-                if (Item == ItemType.Money)
+                else if (Item == ItemType.Money)
                 {
                     UpperTextGameobject.text = "+" + Value + " " + "$";
                 }
-                if (Item == ItemType.Attack)
+                else if (Item == ItemType.Attack)
                 {
                     UpperTextGameobject.text = "x2 Atk.";
                 }
@@ -111,18 +113,26 @@ public class Treasure : MonoBehaviour
                     BackgroundGameobject.color = new Color32(0, 128, 180, 255);
                     gameObject.GetComponent<Button>().interactable = false;
                 }
+                
             }
             else
             {
+                BackgroundGameobject.color = new Color32(0, 0, 0, 255);
+                LockGameobject.color = new Color32(255, 255, 255, 0);
+                LowerTextGameobject.text = "";
+                ChestGameobject.color = new Color32(255, 255, 255, 255);
                 UpperTextGameobject.text = "?";
             }
         }
-
+    }
+    private void Update()
+    {
         if (condition == Player.Condition.Combo)
         {
             if (PLR.CurrentCombo >= conditionValue)
             {
                 Active = true;
+                UpdateVisual();
             }
         }
         if (condition == Player.Condition.PlacesCompleted)
@@ -130,6 +140,7 @@ public class Treasure : MonoBehaviour
             if (GoalChecker.GC.placeCount >= conditionValue)
             {
                 Active = true;
+                UpdateVisual();
             }
         }
         if (condition == Player.Condition.EnemiesDefeated)
@@ -137,6 +148,7 @@ public class Treasure : MonoBehaviour
             if (GoalChecker.GC.enemyCount >= conditionValue)
             {
                 Active = true;
+                UpdateVisual();
             }
         }
     }
@@ -155,18 +167,18 @@ public class Treasure : MonoBehaviour
                         PLR.MaxHealth += Value;
                         Cost += 5;
                     }
-                    if (Item == ItemType.LifeRecovery)
+                    else if (Item == ItemType.LifeRecovery)
                     {
                         PLR.Money -= Cost;
                         PLR.CurrentHealth = PLR.MaxHealth;
                     }
-                    if (Item == ItemType.EnergyUP)
+                    else if (Item == ItemType.EnergyUP)
                     {
                         PLR.Money -= Cost;
                         PLR.MaxEnergy += Value;
                         Cost += 5;
                     }
-                    if (Item == ItemType.AddUpgradePoint)
+                    else if (Item == ItemType.AddUpgradePoint)
                     {
                         PLR.Money -= Cost;
                         PLR.UpgradePoints += Value;
@@ -185,34 +197,41 @@ public class Treasure : MonoBehaviour
 
         if (treasureMode == TreasureType.Free)
         {
-            switch(Item)
+            if (Active)
             {
-                case ItemType.LifeUP:
-                    PLR.MaxHealth += Value;
-                    break;
+                if (!alreadyClaimed)
+                {
+                    switch (Item)
+                    {
+                        case ItemType.LifeUP:
+                            PLR.MaxHealth += Value;
+                            break;
 
-                case ItemType.LifeRecovery:
-                    PLR.CurrentHealth = PLR.MaxHealth;
-                    break;
+                        case ItemType.LifeRecovery:
+                            PLR.CurrentHealth = PLR.MaxHealth;
+                            break;
 
-                case ItemType.EnergyUP:
-                    PLR.MaxEnergy += Value;
-                    break;
+                        case ItemType.EnergyUP:
+                            PLR.MaxEnergy += Value;
+                            break;
 
-                case ItemType.AddUpgradePoint:
-                    PLR.UpgradePoints += Value;
-                    break;
+                        case ItemType.AddUpgradePoint:
+                            PLR.UpgradePoints += Value;
+                            break;
 
-                case ItemType.Money:
-                    PLR.Money += Value;
-                    break;
+                        case ItemType.Money:
+                            PLR.Money += Value;
+                            break;
 
-                case ItemType.Attack:
-                    PLR.MaxAttack += Value;
-                    break;
+                        case ItemType.Attack:
+                            PLR.MaxAttack += Value;
+                            break;
+                    }
+
+                    alreadyClaimed = true;
+                }
             }
-
-            alreadyClaimed = true;
         }
+        UpdateVisual();
     }
 }

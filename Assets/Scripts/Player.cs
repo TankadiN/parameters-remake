@@ -10,10 +10,12 @@ public class Player : MonoBehaviour
     public TMP_Text LevelTextGameobject;
     public Image ExperienceImageGameobject;
     public TMP_Text ExperienceTextGameobject;
-    public TMP_Text UPointsTextGameobject; 
+    public TMP_Text UPointsTextGameobject;
+    [Space(10)]
     public float Level;
     public float NeededExperience;
     public float CurrentExperience;
+    [Space(10)]
     public float UpgradePoints;
     public List<Button> UpgradeButtons;
     [Header("Money & Keys")]
@@ -55,6 +57,18 @@ public class Player : MonoBehaviour
     public TMP_Text DefenseTextGameobject;
     public float MaxDefense;
     public float CurrentDefense;
+    [Header("Settings")]
+    public float lerpTime;
+    
+    private float DisplayExperience;
+    private float DisplayHealth;
+    private float DisplayEnergy;
+    private float DisplayComboTimer;
+    private float DisplayRecovery;
+    private float DisplayAttack;
+    private float DisplayDefense;
+
+    private float DisplayMoney;
 
     private OutputLog OL;
 
@@ -68,10 +82,27 @@ public class Player : MonoBehaviour
             AudioManager.instance.StopAll();
             AudioManager.instance.Play("LevelTheme");
         }
+
+        ExperienceImageGameobject.fillAmount = 0;
+        HealthImageGameobject.fillAmount = 0;
+        EnergyImageGameobject.fillAmount = 0;
+        ComboImageGameobject.fillAmount = 0;
+        RecoveryImageGameobject.fillAmount = 0;
+        AttackImageGameobject.fillAmount = 0;
+        DefenseImageGameobject.fillAmount = 0;
     }
 
     void Update()
     {
+        //Lerp Calculations
+        DisplayExperience = Mathf.Lerp(DisplayExperience, CurrentExperience, lerpTime * Time.deltaTime);
+        DisplayHealth = Mathf.Lerp(DisplayHealth, CurrentHealth, lerpTime * Time.deltaTime);
+        DisplayEnergy = Mathf.Lerp(DisplayEnergy, CurrentEnergy, lerpTime * Time.deltaTime);
+        DisplayComboTimer = Mathf.Lerp(DisplayComboTimer, CurrentComboTimer, lerpTime * Time.deltaTime);
+        DisplayRecovery = Mathf.Lerp(DisplayRecovery, CurrentRecovery, lerpTime * Time.deltaTime);
+        DisplayAttack = Mathf.Lerp(DisplayAttack, CurrentAttack, lerpTime * Time.deltaTime);
+        DisplayDefense = Mathf.Lerp(DisplayDefense, CurrentDefense, lerpTime * Time.deltaTime);
+        DisplayMoney = Mathf.Lerp(DisplayMoney, Money, lerpTime * Time.deltaTime);
         //Calculate Values
         float calcEXP = CurrentExperience / NeededExperience;
         float calcHP = CurrentHealth / MaxHealth;
@@ -81,25 +112,25 @@ public class Player : MonoBehaviour
         float calcATK = CurrentAttack / MaxAttack;
         float calcDEF = CurrentDefense / MaxDefense;
         //Variables
-        float RCV_Multiplier = CurrentRecovery / RCVModifier;
+        float RCV_Multiplier = CurrentRecovery * RCVModifier;
         //Set to bars
-        ExperienceImageGameobject.fillAmount = calcEXP;
-        HealthImageGameobject.fillAmount = calcHP;
-        EnergyImageGameobject.fillAmount = calcEN;
-        ComboImageGameobject.fillAmount = calcCOMBO;
-        RecoveryImageGameobject.fillAmount = calcRCV;
-        AttackImageGameobject.fillAmount = calcATK;
-        DefenseImageGameobject.fillAmount = calcDEF;
+        ExperienceImageGameobject.fillAmount = Mathf.Lerp(ExperienceImageGameobject.fillAmount, calcEXP, lerpTime * Time.deltaTime);
+        HealthImageGameobject.fillAmount = Mathf.Lerp(HealthImageGameobject.fillAmount, calcHP, lerpTime * Time.deltaTime); ;
+        EnergyImageGameobject.fillAmount = Mathf.Lerp(EnergyImageGameobject.fillAmount, calcEN, lerpTime * Time.deltaTime); ;
+        ComboImageGameobject.fillAmount = Mathf.Lerp(ComboImageGameobject.fillAmount, calcCOMBO, lerpTime * Time.deltaTime); ;
+        RecoveryImageGameobject.fillAmount = Mathf.Lerp(RecoveryImageGameobject.fillAmount, calcRCV, lerpTime * Time.deltaTime); ;
+        AttackImageGameobject.fillAmount = Mathf.Lerp(AttackImageGameobject.fillAmount, calcATK, lerpTime * Time.deltaTime); ;
+        DefenseImageGameobject.fillAmount = Mathf.Lerp(DefenseImageGameobject.fillAmount, calcDEF, lerpTime * Time.deltaTime); ;
         //Set to texts
         LevelTextGameobject.text = "Level " + Level.ToString("0");
-        ExperienceTextGameobject.text = CurrentExperience.ToString("0") + "/" + NeededExperience.ToString("0");
-        HealthTextGameobject.text = CurrentHealth.ToString("0") + "/" + MaxHealth.ToString("0");
-        EnergyTextGameobject.text = CurrentEnergy.ToString("0") + "/" + MaxEnergy.ToString("0");
+        ExperienceTextGameobject.text = DisplayExperience.ToString("0") + "/" + NeededExperience.ToString("0");
+        HealthTextGameobject.text = DisplayHealth.ToString("0") + "/" + MaxHealth.ToString("0");
+        EnergyTextGameobject.text = DisplayEnergy.ToString("0") + "/" + MaxEnergy.ToString("0");
         ComboTextGameobject.text = "x" + CurrentCombo.ToString("0");
-        RecoveryTextGameobject.text = CurrentRecovery.ToString("0");
-        AttackTextGameobject.text = CurrentAttack.ToString("0") + "/" + MaxAttack.ToString("0");
-        DefenseTextGameobject.text = CurrentDefense.ToString("0") + "/" + MaxDefense.ToString("0");
-        MoneyTextGameobject.text = "$ " + Money.ToString("0");
+        RecoveryTextGameobject.text = DisplayRecovery.ToString("0");
+        AttackTextGameobject.text = DisplayAttack.ToString("0") + "/" + MaxAttack.ToString("0");
+        DefenseTextGameobject.text = DisplayDefense.ToString("0") + "/" + MaxDefense.ToString("0");
+        MoneyTextGameobject.text = "$ " + DisplayMoney.ToString("0");
         SKeysTextGameobject.text = SilverKeys.ToString("0");
         GKeysTextGameobject.text = GoldenKeys.ToString("0");
         UPointsTextGameobject.text = "+" + UpgradePoints.ToString("0");
@@ -146,7 +177,8 @@ public class Player : MonoBehaviour
         {
             float EXP_VALUE_UP = Random.Range(25, 100);
             OL.AddLog("<color=#FF00FF>LEVEL UP!</color> <color=#FF0000>+3 Upgrade Points</color>");
-            CurrentExperience = 0;
+            float EXCEEDED_EXP = CurrentExperience - NeededExperience;
+            CurrentExperience = 0f + EXCEEDED_EXP;
             NeededExperience += EXP_VALUE_UP;
             Level += 1;
             UpgradePoints += 3;

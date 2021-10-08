@@ -146,7 +146,7 @@ namespace ModIO
             UnityWebRequest webRequest = operation.webRequest;
             request.isDone = true;
 
-            if(webRequest.isNetworkError || webRequest.isHttpError)
+            if(webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
             {
                 request.error = WebRequestError.GenerateFromWebRequest(webRequest);
                 request.NotifyFailed();
@@ -383,7 +383,7 @@ namespace ModIO
             bool succeeded = false;
             downloadInfo.isDone = true;
 
-            if(request.isNetworkError || request.isHttpError)
+            if(request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
             {
                 if(request.error.ToUpper() == "USER ABORTED"
                    || request.error.ToUpper() == "REQUEST ABORTED")
