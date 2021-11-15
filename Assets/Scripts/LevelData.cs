@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,11 +10,12 @@ public class LevelData : MonoBehaviour
     public string levelName;
 
     public List<EntityInfo> places;
+    
     public GameObject[] targetplace;
 
     private void Start()
     {
-        GameEvents.SaveInitiated += Save;
+        SaveSystem.Init();
     }
 
     private IEnumerator GetPlaces()
@@ -154,22 +156,28 @@ public class LevelData : MonoBehaviour
 
     void Save()
     {
-        SaveLoad.Save<List<EntityInfo>>(places, levelName);
+        Data levelSaveData = new Data
+        {
+            data = places
+        };
+        string json = JsonUtility.ToJson(levelSaveData);
+        Debug.Log(json);
+        SaveSystem.Save(json, levelName);
+        Debug.Log("Saved?");
     }
 
     void Load()
     {
-#if UNITY_EDITOR
-        if(SaveLoad.SaveExists(levelName))
+        if (SaveLoad.SaveExists(levelName))
         {
-            LoadLevel(SaveLoad.Load<List<EntityInfo>>(levelName));
+            if (File.Exists(SaveSystem.LEVEL_DATA_FOLDER + levelName + ".txt"))
+            {
+                string levelString = SaveSystem.LoadLevel(levelName);
+                Data dataLevel = JsonUtility.FromJson<Data>(levelString);
+
+                LoadLevel(dataLevel.data);
+            }
         }
-#else
-        if(SaveLoad.SaveExistsInDataPath(levelName))
-        {
-            LoadLevel(SaveLoad.LoadFromDataPath<List<PlaceInfo>>(levelName));
-        }
-#endif
     }
 
     public void CollectLevelData()
@@ -179,12 +187,18 @@ public class LevelData : MonoBehaviour
 
     public void SaveToFile()
     {
-        GameEvents.OnSaveInitiated();
+        Save();
     }
 
     public void ExecuteLoad(string level)
     {
         levelName = level;
         Load();
+    }
+
+    [System.Serializable]
+    public class Data
+    {
+        public List<EntityInfo> data;
     }
 }

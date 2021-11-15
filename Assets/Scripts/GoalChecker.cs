@@ -177,6 +177,11 @@ public class GoalChecker : MonoBehaviour
             {
                 GlobalLevels.GL.Levels[levelIDToUnlock] = true;
             }
+
+            if(GameJoltAPI.Instance && GameJoltAPI.Instance.HasSignedInUser == false)
+            {
+                SendScoreButton.interactable = false;
+            }
         }
         Debug.Log("Places Completed: " + placeCount + "/" + Places.Count + ", Enemies Defeated: " + enemyCount + "/" + Enemies.Count + ", Bosses Defeated: " + bossCount + "/" + Bosses.Count + ", Quota met?: " + FullComplete);
     }

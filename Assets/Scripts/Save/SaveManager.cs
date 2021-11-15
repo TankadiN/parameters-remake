@@ -8,8 +8,14 @@ public class SaveManager : MonoBehaviour
 
     public GameObject SavePanel;
 
-    public bool Save;
-    public bool Load;
+    public enum Action
+    {
+        None,
+        Save,
+        Load
+    }
+
+    public Action state;
 
     private void Start()
     {
@@ -18,18 +24,17 @@ public class SaveManager : MonoBehaviour
 
     public void SavePressed()
     {
-        Save = true;
+        state = Action.Save;
         SavePanel.SetActive(true);
     }
     public void LoadPressed()
     {
-        Load = true;
+        state = Action.Load;
         SavePanel.SetActive(true);
     }
     public void ClosePressed()
     {
-        Save = false;
-        Load = false;
+        state = Action.None;
         SavePanel.SetActive(false);
         SaveFile.SF.SaveLoadOutput.text = "";
     }
