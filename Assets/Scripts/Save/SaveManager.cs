@@ -24,13 +24,27 @@ public class SaveManager : MonoBehaviour
 
     public void SavePressed()
     {
-        state = Action.Save;
-        SavePanel.SetActive(true);
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            GameObject.Find("GameManager").GetComponent<MainMenu>().WebGLNotSupported();
+        }
+        else
+        {
+            state = Action.Save;
+            SavePanel.SetActive(true);
+        }
     }
     public void LoadPressed()
     {
-        state = Action.Load;
-        SavePanel.SetActive(true);
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            GameObject.Find("GameManager").GetComponent<MainMenu>().WebGLNotSupported();
+        }
+        else
+        {
+            state = Action.Load;
+            SavePanel.SetActive(true);
+        }
     }
     public void ClosePressed()
     {

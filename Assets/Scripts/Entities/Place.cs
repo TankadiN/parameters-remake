@@ -21,17 +21,19 @@ public class Place : MonoBehaviour
     public float CurrentProgress;
     public float ProgressNeeded;
     public float EnergyNeeded;
+    public float DisplayPercent;
     [Header("Experience & Gold Ongoing")]
     public string ExpOngoing;
     [Space(10)]
     public string GoldOngoing;
     [Header("Gold Completed")]
     public string GoldCompleted;
+    [Header("Settings")]
+    public float lerpTime;
 
     private float minExpOng, maxExpOng;
     private float minGoldOng, maxGoldOng;
     private float minGoldComp, maxGoldComp;
-
 
     void Start()
     {
@@ -56,9 +58,9 @@ public class Place : MonoBehaviour
     {
         float calcPercent = CurrentProgress * 100 / ProgressNeeded;
         float calcBarPercent = CurrentProgress / ProgressNeeded;
-        string Percent = calcPercent.ToString("0");
-        PercentText.text = Percent + "%";
-        ProgressBar.fillAmount = calcBarPercent;
+        DisplayPercent = Mathf.Lerp(DisplayPercent, calcPercent, lerpTime * Time.deltaTime);
+        PercentText.text = DisplayPercent.ToString("0") + "%";
+        ProgressBar.fillAmount = Mathf.Lerp(ProgressBar.fillAmount, calcBarPercent, lerpTime * Time.deltaTime);
         if(CurrentProgress == ProgressNeeded)
         {
             ProgressBar.color = new Color32(140, 63, 0, 255);

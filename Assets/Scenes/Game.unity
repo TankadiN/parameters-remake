@@ -856,9 +856,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 30
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &25475879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1270,9 +1272,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 18
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &38101917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1809,9 +1813,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 16
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &55042100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2347,7 +2353,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -2359,9 +2365,9 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
-  m_textAlignment: 258
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -3202,9 +3208,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 16
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &91637481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3874,7 +3882,7 @@ MonoBehaviour:
   DefenseTextGameobject: {fileID: 612943553}
   MaxDefense: 10
   CurrentDefense: 10
-  lerpTime: 0
+  lerpTime: 10
 --- !u!114 &103704194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4499,9 +4507,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &127517579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5067,9 +5077,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &144417858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5196,9 +5208,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &152467862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5460,9 +5474,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 16
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &156676265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9338,9 +9354,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 20
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &223006886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9827,9 +9845,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &239181332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10380,12 +10400,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 32
+  DisplayHealth: 0
   MaxHealth: 32
   EnemyAttack: 60
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &257795504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11186,12 +11208,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 108
+  DisplayHealth: 0
   MaxHealth: 108
   EnemyAttack: 100
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &273623190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11907,9 +11931,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 16
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &282267189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12173,12 +12199,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 40
+  DisplayHealth: 0
   MaxHealth: 40
   EnemyAttack: 60
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &289493586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12536,12 +12564,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 390
+  DisplayHealth: 0
   MaxHealth: 390
   EnemyAttack: 160
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &292052627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14171,12 +14201,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 752
+  DisplayHealth: 0
   MaxHealth: 752
   EnemyAttack: 300
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &340436699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14303,9 +14335,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 15
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &342737634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15781,9 +15815,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 25
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &372565515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16348,12 +16384,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 36
+  DisplayHealth: 0
   MaxHealth: 36
   EnemyAttack: 60
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &391733146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16712,9 +16750,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 15
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &396523539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17146,12 +17186,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 40
+  DisplayHealth: 0
   MaxHealth: 40
   EnemyAttack: 70
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &422358242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20531,12 +20573,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 36
+  DisplayHealth: 0
   MaxHealth: 36
   EnemyAttack: 60
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &517563755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22041,9 +22085,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &568624863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22694,9 +22740,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 16
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &579582583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23173,9 +23221,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 15
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &583531743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23587,9 +23637,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 15
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &596648715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23847,12 +23899,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 200
+  DisplayHealth: 0
   MaxHealth: 200
   EnemyAttack: 120
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &601871424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29697,9 +29751,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &767301925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30899,9 +30955,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &810176101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31238,9 +31296,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 15
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &815946067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31732,12 +31792,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 226
+  DisplayHealth: 0
   MaxHealth: 226
   EnemyAttack: 140
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &826744443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32166,12 +32228,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 36
+  DisplayHealth: 0
   MaxHealth: 36
   EnemyAttack: 60
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &846162087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32523,9 +32587,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &856742957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32654,12 +32720,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 178
+  DisplayHealth: 0
   MaxHealth: 178
   EnemyAttack: 120
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &858470211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33287,9 +33355,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 10
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &872255833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33568,9 +33638,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 16
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &875551057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34641,7 +34713,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -34653,9 +34725,9 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
-  m_textAlignment: 258
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -35955,9 +36027,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &951706318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37976,9 +38050,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1016149972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40039,7 +40115,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -40052,8 +40128,8 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 513
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -40231,9 +40307,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 30
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1055299792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41965,12 +42043,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 424
+  DisplayHealth: 0
   MaxHealth: 424
   EnemyAttack: 200
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1094290960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42250,7 +42330,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -42263,8 +42343,8 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 513
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -43059,12 +43139,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 94
+  DisplayHealth: 0
   MaxHealth: 94
   EnemyAttack: 100
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1111241360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43193,12 +43275,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 80
+  DisplayHealth: 0
   MaxHealth: 80
   EnemyAttack: 100
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1112029105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43402,12 +43486,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 46
+  DisplayHealth: 0
   MaxHealth: 46
   EnemyAttack: 60
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1117749200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43569,9 +43655,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 16
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1123695950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44108,9 +44196,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 16
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1130985324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45151,9 +45241,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 10
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1147680407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47074,9 +47166,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 30
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1191082396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47598,9 +47692,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 10
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1204525449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48208,12 +48304,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 412
+  DisplayHealth: 0
   MaxHealth: 412
   EnemyAttack: 200
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1223865146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48612,12 +48710,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 144
+  DisplayHealth: 0
   MaxHealth: 144
   EnemyAttack: 110
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1237746220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48896,9 +48996,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 15
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1243370306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50872,12 +50974,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 80
+  DisplayHealth: 0
   MaxHealth: 80
   EnemyAttack: 90
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1317653359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51678,9 +51782,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 16
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1331503389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51901,7 +52007,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -51913,9 +52019,9 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
-  m_textAlignment: 258
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -52230,9 +52336,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1337534874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52723,9 +52831,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1350981464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53062,9 +53172,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1359109487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54594,12 +54706,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 126
+  DisplayHealth: 0
   MaxHealth: 126
   EnemyAttack: 100
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1400310082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56883,9 +56997,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1439192302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57738,12 +57854,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 36
+  DisplayHealth: 0
   MaxHealth: 36
   EnemyAttack: 60
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1449465829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58139,12 +58257,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 166
+  DisplayHealth: 0
   MaxHealth: 166
   EnemyAttack: 120
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1463513493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60652,9 +60772,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 16
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1550641973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61010,9 +61132,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1557998043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61486,9 +61610,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1571056902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61615,9 +61741,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 16
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1573546944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61821,9 +61949,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 16
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1590601905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62677,12 +62807,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 170
+  DisplayHealth: 0
   MaxHealth: 170
   EnemyAttack: 130
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1627528034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62886,12 +63018,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 118
+  DisplayHealth: 0
   MaxHealth: 118
   EnemyAttack: 110
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1628610816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64072,9 +64206,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 16
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1648741551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64915,9 +65051,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1666845224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65171,7 +65309,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -65183,9 +65321,9 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
-  m_textAlignment: 258
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -65307,7 +65445,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -65319,9 +65457,9 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
-  m_textAlignment: 258
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -65581,12 +65719,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 82
+  DisplayHealth: 0
   MaxHealth: 82
   EnemyAttack: 90
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1679587900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66230,9 +66370,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1704033874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66693,12 +66835,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 98
+  DisplayHealth: 0
   MaxHealth: 98
   EnemyAttack: 100
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1709832113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69694,9 +69838,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1780947563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71606,9 +71752,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1828510167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71735,9 +71883,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 16
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1828604647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73988,9 +74138,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1882369309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74573,12 +74725,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 58
+  DisplayHealth: 0
   MaxHealth: 58
   EnemyAttack: 80
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1894556586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75069,12 +75223,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 44
+  DisplayHealth: 0
   MaxHealth: 44
   EnemyAttack: 70
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1905116295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77704,12 +77860,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 88
+  DisplayHealth: 0
   MaxHealth: 88
   EnemyAttack: 90
   Exp: 
   Gold: 
   SKeys: 
   GKeys: 
+  lerpTime: 0
 --- !u!114 &1972245766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77836,9 +77994,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 19
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1972315098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77965,9 +78125,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 15
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1972389118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78094,9 +78256,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 30
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &1977845559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79348,9 +79512,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &2010832581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80114,9 +80280,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &2024552691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80907,9 +81075,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 10
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &2061077490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81775,9 +81945,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 21
   EnergyNeeded: 15
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &2083353638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81980,9 +82152,11 @@ MonoBehaviour:
   CurrentProgress: 0
   ProgressNeeded: 15
   EnergyNeeded: 10
+  DisplayPercent: 0
   ExpOngoing: 
   GoldOngoing: 
   GoldCompleted: 
+  lerpTime: 0
 --- !u!114 &2085965398
 MonoBehaviour:
   m_ObjectHideFlags: 0

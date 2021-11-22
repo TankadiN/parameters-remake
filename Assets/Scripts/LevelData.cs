@@ -168,15 +168,12 @@ public class LevelData : MonoBehaviour
 
     void Load()
     {
-        if (SaveLoad.SaveExists(levelName))
+        if (File.Exists(SaveSystem.LEVEL_DATA_FOLDER + levelName + ".txt"))
         {
-            if (File.Exists(SaveSystem.LEVEL_DATA_FOLDER + levelName + ".txt"))
-            {
-                string levelString = SaveSystem.LoadLevel(levelName);
-                Data dataLevel = JsonUtility.FromJson<Data>(levelString);
+            string levelString = SaveSystem.LoadLevel(levelName);
+            Data dataLevel = JsonUtility.FromJson<Data>(levelString);
 
-                LoadLevel(dataLevel.data);
-            }
+            LoadLevel(dataLevel.data);
         }
     }
 
@@ -190,10 +187,20 @@ public class LevelData : MonoBehaviour
         Save();
     }
 
-    public void ExecuteLoad(string level)
+    /*public void ExecuteLoad(string level)
     {
         levelName = level;
         Load();
+    }*/
+
+    public void ExecuteLoadString(string level)
+    {
+        if (level != null)
+        {
+            Data dataLevel = JsonUtility.FromJson<Data>(level);
+
+            LoadLevel(dataLevel.data);
+        }
     }
 
     [System.Serializable]

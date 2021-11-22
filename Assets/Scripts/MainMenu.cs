@@ -26,7 +26,9 @@ public class MainMenu : MonoBehaviour
     public GameObject DiscordPanel;
     [Header("Warning")]
     public GameObject WarningPanel;
-    
+
+    public GameObject WebGLPanel;
+
     public static MainMenu MM;
 
     private float timer = 3f;
@@ -44,11 +46,18 @@ public class MainMenu : MonoBehaviour
 
     private void CheckDev()
     {
-        if (DiscordManager.current.isInitialized && DiscordManager.current.CurrentUser.ID == 151701569543340032)
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
-            Dev.SetActive(true);
-            avatarImage.texture = DiscordManager.current.CurrentUser.avatar;
-            username.text = DiscordManager.current.CurrentUser.username + DiscordManager.current.CurrentUser.discrim + " <color=red>[Dev]</color>";
+            
+        }
+        else
+        {
+            if (DiscordManager.current && DiscordManager.current.CurrentUser.ID == 151701569543340032)
+            {
+                Dev.SetActive(true);
+                avatarImage.texture = DiscordManager.current.CurrentUser.avatar;
+                username.text = DiscordManager.current.CurrentUser.username + DiscordManager.current.CurrentUser.discrim + " <color=red>[Dev]</color>";
+            }
         }
     }
 
@@ -109,25 +118,39 @@ public class MainMenu : MonoBehaviour
 
     public void Gamejolt()
     {
-        if (GamejoltPanel.activeInHierarchy == false)
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
-            GamejoltPanel.SetActive(true);
+            WebGLNotSupported();
         }
         else
         {
-            GamejoltPanel.SetActive(false);
+            if (GamejoltPanel.activeInHierarchy == false)
+            {
+                GamejoltPanel.SetActive(true);
+            }
+            else
+            {
+                GamejoltPanel.SetActive(false);
+            }
         }
     }
 
     public void Discord()
     {
-        if (DiscordPanel.activeInHierarchy == false)
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
-            DiscordPanel.SetActive(true);
+            WebGLNotSupported();
         }
         else
         {
-            DiscordPanel.SetActive(false);
+            if (DiscordPanel.activeInHierarchy == false)
+            {
+                DiscordPanel.SetActive(true);
+            }
+            else
+            {
+                DiscordPanel.SetActive(false);
+            }
         }
     }
 
@@ -156,6 +179,18 @@ public class MainMenu : MonoBehaviour
             {
                 p.SetActive(false);
             }
+        }
+    }
+
+    public void WebGLNotSupported()
+    {
+        if (WebGLPanel.activeInHierarchy == false)
+        {
+            WebGLPanel.SetActive(true);
+        }
+        else
+        {
+            WebGLPanel.SetActive(false);
         }
     }
 

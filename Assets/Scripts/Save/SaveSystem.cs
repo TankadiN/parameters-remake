@@ -44,6 +44,19 @@ public static class SaveSystem
         }
     }
 
+    public static string LoadLevelFromFile(TextAsset name)
+    {
+        if (name != null)
+        {
+            string saveString = File.ReadAllText(name.ToString());
+            return saveString;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     public static string Load(string fileNumber)
     {
         if(File.Exists(SAVE_FOLDER + "file_" + fileNumber + ".txt"))

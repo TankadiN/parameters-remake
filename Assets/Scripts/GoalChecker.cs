@@ -57,6 +57,7 @@ public class GoalChecker : MonoBehaviour
                 CheatsEnabledPanel.SetActive(true);
             }
         }
+        EndPanelTextWarning.SetActive(false);
         tableID = GlobalData.GD.tableID;
         levelIDToUnlock = GlobalData.GD.levelID + 1;
         DiscordController.instance.SetRichPresence("In Game (" + GlobalData.GD.levelString + ")", GlobalData.GD.Mode.ToString());
@@ -104,10 +105,6 @@ public class GoalChecker : MonoBehaviour
                 EndPanelTextWarning.SetActive(true);
             }
         }
-        /*if(GameJoltAPI.Instance && GameJoltAPI.Instance.HasSignedInUser == false)
-        {
-            SendScoreButton.interactable = false;
-        }*/
         if (Input.GetKeyDown(KeyCode.P))
         {
             GetPlaces();
@@ -180,7 +177,7 @@ public class GoalChecker : MonoBehaviour
 
             if(GameJoltAPI.Instance && GameJoltAPI.Instance.HasSignedInUser == false)
             {
-                SendScoreButton.interactable = false;
+                SendScoreButton.gameObject.SetActive(false);
             }
         }
         Debug.Log("Places Completed: " + placeCount + "/" + Places.Count + ", Enemies Defeated: " + enemyCount + "/" + Enemies.Count + ", Bosses Defeated: " + bossCount + "/" + Bosses.Count + ", Quota met?: " + FullComplete);

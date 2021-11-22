@@ -8,6 +8,7 @@ public class GlobalData : MonoBehaviour
     public static GlobalData GD;
 
     public string levelString;
+    public string levelFile_String;
     public int tableID;
     public int levelID;
 

@@ -12825,11 +12825,13 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentProgress: 0
-  ProgressNeeded: 10000
+  ProgressNeeded: 5
   EnergyNeeded: 1
+  DisplayPercent: 0
   ExpOngoing: 5/25
   GoldOngoing: 5/25
   GoldCompleted: 10/40
+  lerpTime: 10
 --- !u!114 &1350981464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16309,12 +16311,14 @@ MonoBehaviour:
   GoldLock: 0
   GoldColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   CurrentHealth: 98
+  DisplayHealth: 0
   MaxHealth: 98
   EnemyAttack: 100
   Exp: 25/50
   Gold: 10/50
   SKeys: 1/2
   GKeys: 0/1
+  lerpTime: 10
 --- !u!114 &1709832113
 MonoBehaviour:
   m_ObjectHideFlags: 0

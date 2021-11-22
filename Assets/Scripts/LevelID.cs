@@ -8,6 +8,7 @@ public class LevelID : MonoBehaviour
 {
     public Image Lock;
     public string levelName;
+    public TextAsset levelFile;
     public bool unlocked;
     public bool available;
     public int ID;
@@ -52,6 +53,7 @@ public class LevelID : MonoBehaviour
     public void EnterLevel()
     {
         GlobalData.GD.levelString = levelName;
+        GlobalData.GD.levelFile_String = levelFile.text;
         GlobalData.GD.tableID = tableID;
         if(GlobalData.GD.Mode == GlobalData.Modes.TimeAttack)
         {

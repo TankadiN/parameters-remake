@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     public bool GoldLock;
     public Color GoldColor;
     public float CurrentHealth;
+    public float DisplayHealth;
     public float MaxHealth;
     public float EnemyAttack;
     [Header("Experience & Gold & Keys")]
@@ -33,7 +34,8 @@ public class Enemy : MonoBehaviour
     public string SKeys;
     [Space(10)]
     public string GKeys;
-
+    [Header("Settings")]
+    public float lerpTime;
 
     private float minExp;
     private float maxExp;
@@ -56,11 +58,6 @@ public class Enemy : MonoBehaviour
         OL = GameObject.Find("GameManager").GetComponent<OutputLog>();
         PLR = GameObject.Find("GameManager").GetComponent<Player>();
 
-        //Exp = MinExp + "/" + MaxExp;
-        //Gold = MinGold + "/" + MaxGold;
-        //SKeys = MinSKeys + "/" + MaxSKeys;
-        //GKeys = minGKeys + "/" + MaxGKeys;
-
         string[] splitArrExp = Exp.Split(char.Parse("/"));
         minExp = float.Parse(splitArrExp[0]);
         maxExp = float.Parse(splitArrExp[1]);
@@ -80,9 +77,10 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        DisplayHealth = Mathf.Lerp(DisplayHealth, CurrentHealth, lerpTime * Time.deltaTime);
         float calcHealthBar = CurrentHealth / MaxHealth;
-        HealthText.text = CurrentHealth.ToString("0") + "/" + MaxHealth.ToString("0");
-        HealthBar.fillAmount = calcHealthBar;
+        HealthText.text = DisplayHealth.ToString("0") + "/" + MaxHealth.ToString("0");
+        HealthBar.fillAmount = Mathf.Lerp(HealthBar.fillAmount, calcHealthBar, lerpTime * Time.deltaTime);
         if (CurrentHealth >= MaxHealth)
         {
             CurrentHealth = MaxHealth;

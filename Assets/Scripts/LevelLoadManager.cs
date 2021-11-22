@@ -26,7 +26,8 @@ public class LevelLoadManager : MonoBehaviour
 
     public void LoadGame()
     {
-        Level.ExecuteLoad(GlobalData.GD.levelString);
+        //Level.ExecuteLoad(GlobalData.GD.levelString);
+        Level.ExecuteLoadString(GlobalData.GD.levelFile_String);
         foreach (EntityInfo e in Level.places)
         {
             if (e.type == EntityInfo.PlaceType.Place)

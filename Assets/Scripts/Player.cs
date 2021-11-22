@@ -115,12 +115,12 @@ public class Player : MonoBehaviour
         float RCV_Multiplier = CurrentRecovery * RCVModifier;
         //Set to bars
         ExperienceImageGameobject.fillAmount = Mathf.Lerp(ExperienceImageGameobject.fillAmount, calcEXP, lerpTime * Time.deltaTime);
-        HealthImageGameobject.fillAmount = Mathf.Lerp(HealthImageGameobject.fillAmount, calcHP, lerpTime * Time.deltaTime); ;
-        EnergyImageGameobject.fillAmount = Mathf.Lerp(EnergyImageGameobject.fillAmount, calcEN, lerpTime * Time.deltaTime); ;
-        ComboImageGameobject.fillAmount = Mathf.Lerp(ComboImageGameobject.fillAmount, calcCOMBO, lerpTime * Time.deltaTime); ;
-        RecoveryImageGameobject.fillAmount = Mathf.Lerp(RecoveryImageGameobject.fillAmount, calcRCV, lerpTime * Time.deltaTime); ;
-        AttackImageGameobject.fillAmount = Mathf.Lerp(AttackImageGameobject.fillAmount, calcATK, lerpTime * Time.deltaTime); ;
-        DefenseImageGameobject.fillAmount = Mathf.Lerp(DefenseImageGameobject.fillAmount, calcDEF, lerpTime * Time.deltaTime); ;
+        HealthImageGameobject.fillAmount = Mathf.Lerp(HealthImageGameobject.fillAmount, calcHP, lerpTime * Time.deltaTime);
+        EnergyImageGameobject.fillAmount = Mathf.Lerp(EnergyImageGameobject.fillAmount, calcEN, lerpTime * Time.deltaTime);
+        ComboImageGameobject.fillAmount = Mathf.Lerp(ComboImageGameobject.fillAmount, calcCOMBO, lerpTime * Time.deltaTime);
+        RecoveryImageGameobject.fillAmount = Mathf.Lerp(RecoveryImageGameobject.fillAmount, calcRCV, lerpTime * Time.deltaTime);
+        AttackImageGameobject.fillAmount = Mathf.Lerp(AttackImageGameobject.fillAmount, calcATK, lerpTime * Time.deltaTime);
+        DefenseImageGameobject.fillAmount = Mathf.Lerp(DefenseImageGameobject.fillAmount, calcDEF, lerpTime * Time.deltaTime);
         //Set to texts
         LevelTextGameobject.text = "Level " + Level.ToString("0");
         ExperienceTextGameobject.text = DisplayExperience.ToString("0") + "/" + NeededExperience.ToString("0");

@@ -76,20 +76,23 @@ public class DiscordController : MonoBehaviour
 
     public void UpdatePresence()
     {
-        if (discordRP)
+        if (DiscordManager.current)
         {
-            if (customRP)
+            if (discordRP)
             {
-                DiscordManager.current.SetPresence(customPresence);
+                if (customRP)
+                {
+                    DiscordManager.current.SetPresence(customPresence);
+                }
+                else
+                {
+                    DiscordManager.current.SetPresence(presence);
+                }
             }
             else
             {
-                DiscordManager.current.SetPresence(presence);
+                DiscordManager.current.SetPresence(emptyPresence);
             }
-        }
-        else
-        {
-            DiscordManager.current.SetPresence(emptyPresence);
         }
     }
 
