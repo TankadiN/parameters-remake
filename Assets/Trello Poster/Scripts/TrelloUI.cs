@@ -129,7 +129,7 @@ public class TrelloUI : MonoBehaviour
         {
             GetUser();
             playerName.gameObject.SetActive(useDiscord.isOn ? false : true);
-            playerName.text = useDiscord.isOn ? DiscordManager.current.CurrentUser.username + DiscordManager.current.CurrentUser.discrim : "";
+            playerName.text = useDiscord.isOn ? DiscordManager.current.CurrentUser.username + DiscordManager.current.CurrentUser.discrim + " [Discord]" : "";
         }
         else
         {

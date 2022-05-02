@@ -6,7 +6,9 @@ public class GlobalData : MonoBehaviour
 {
 
     public static GlobalData GD;
-
+    [Header("Main Menu Data")]
+    public bool changelogBool;
+    [Header("level Data")]
     public string levelString;
     public string levelFile_String;
     public int tableID;

@@ -26,6 +26,9 @@ public class MainMenu : MonoBehaviour
     public GameObject DiscordPanel;
     [Header("Warning")]
     public GameObject WarningPanel;
+    [Header("Changelog")]
+    public GameObject ChangelogPanel;
+    public bool isChangelogClosed;
 
     public GameObject WebGLPanel;
 
@@ -36,12 +39,16 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        Dev.SetActive(false);
+        isChangelogClosed = GlobalData.GD.changelogBool;
+        if(!isChangelogClosed)
+        {
+            Changelog();
+        }
         MM = this;
         AudioManager.instance.StopAll();
         AudioManager.instance.Play("MainMenu");
-        //DiscordController.instance.SetRichPresence("Main Menu", "Just Vibing...");
-        DiscordController.instance.SetRichPresence("Hippity hoppity", "get off my property");
+        DiscordController.instance.SetRichPresence("In Main Menu", "Just Vibing...");
+        //DiscordController.instance.SetRichPresence("Hippity hoppity", "get off my property");
     }
 
     private void CheckDev()
@@ -164,6 +171,20 @@ public class MainMenu : MonoBehaviour
         {
             WarningPanel.SetActive(false);
         }
+    }
+
+    public void Changelog()
+    {
+        if(ChangelogPanel.activeInHierarchy == false)
+        {
+            ChangelogPanel.SetActive(true);
+        }
+        else
+        {
+            ChangelogPanel.SetActive(false);
+            isChangelogClosed = true;
+        }
+        GlobalData.GD.changelogBool = isChangelogClosed;
     }
 
     public void HowToPlay()
