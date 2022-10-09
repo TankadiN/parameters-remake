@@ -22,46 +22,12 @@ public class DevTools : MonoBehaviour
 
     public void UseCustom(bool state)
     {
-        DiscordController.instance.customRP = state;
-        DiscordController.instance.UpdatePresence();
+        
     }
 
     public void SetCustomPresence()
     {
-        DiscordController.instance.customPresence.details = customDetail.text;
-        DiscordController.instance.customPresence.state = customState.text;
-        DiscordController.instance.customPresence.endTime = 0;
-        DiscordController.instance.customPresence.largeAsset = new DiscordAsset()
-        {
-            image = "game_icon",
-            tooltip = customImageTooltip.text
-        };
-        DiscordController.instance.customPresence.buttons.Clear();
-        if (customButtonLabel1.text != null && customButtonUrl1.text != null)
-        {
-            DiscordController.instance.customPresence.buttons.Add(new DiscordButton()
-            {
-                label = customButtonLabel1.text,
-                url = customButtonUrl1.text
-            });
-            if (customButtonLabel2.text != null && customButtonUrl2.text != null)
-            {
-                DiscordController.instance.customPresence.buttons.Add(new DiscordButton()
-                {
-                    label = customButtonLabel2.text,
-                    url = customButtonUrl2.text
-                });
-            }
-            else
-            {
-
-            }
-        }
-        else
-        {
-
-        }
-        DiscordController.instance.UpdatePresence();
+        
     }
 
     public void ForceCrash()

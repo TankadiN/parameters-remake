@@ -59,12 +59,12 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            if (DiscordManager.current && DiscordManager.current.CurrentUser.ID == 151701569543340032)
+            /*if (DiscordManager.current && DiscordManager.current.CurrentUser.ID == 151701569543340032)
             {
                 Dev.SetActive(true);
                 avatarImage.texture = DiscordManager.current.CurrentUser.avatar;
                 username.text = DiscordManager.current.CurrentUser.username + DiscordManager.current.CurrentUser.discrim + " <color=red>[Dev]</color>";
-            }
+            }*/
         }
     }
 

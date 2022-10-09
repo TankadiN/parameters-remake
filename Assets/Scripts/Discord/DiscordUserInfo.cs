@@ -19,12 +19,12 @@ public class DiscordUserInfo : MonoBehaviour
 
     private void Update()
     {
-        discordStatus.sprite = DiscordManager.current.isInitialized ? initialized : deinitialized;
+        //discordStatus.sprite = DiscordManager.current.isInitialized ? initialized : deinitialized;
     }
 
     public void UpdateText()
     {
-        avatarImage.texture = userToggle.isOn ? null : DiscordManager.current.CurrentUser.avatar;
+        /*avatarImage.texture = userToggle.isOn ? null : DiscordManager.current.CurrentUser.avatar;
         if (DiscordManager.current.isInitialized)
         {
             username.text = userToggle.isOn ? "[HIDDEN]#0000" : DiscordManager.current.CurrentUser.username + DiscordManager.current.CurrentUser.discrim;
@@ -33,6 +33,6 @@ public class DiscordUserInfo : MonoBehaviour
         {
             username.text = userToggle.isOn ? "[HIDDEN]#0000" : "null";
         }
-        userID.text = userToggle.isOn ? "ID: [HIDDEN]" : "ID: " + DiscordManager.current.CurrentUser.ID.ToString();
+        userID.text = userToggle.isOn ? "ID: [HIDDEN]" : "ID: " + DiscordManager.current.CurrentUser.ID.ToString();*/
     }
 }
