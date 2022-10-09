@@ -145,6 +145,7 @@ public class Jackpot : MonoBehaviour
                     SpinB = true;
                     SpinC = true;
                     Spinning = true;
+                    PLR.ResetTimer();
                 }
                 else
                 {
@@ -183,5 +184,6 @@ public class Jackpot : MonoBehaviour
             OL.AddLog("<color=#00FF00>Gained 20 x 5 EXP</color>");
             PLR.CurrentExperience += 20 * 5;
         }
+        PLR.ResetTimer();
     }
 }

@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
     [Space(10)]
     public string GKeys;
     [Header("Settings")]
+    public float elapsedTime;
     public float lerpTime;
 
     private float minExp;
@@ -53,6 +54,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        UpdateVisuals();
         HealthBar.color = new Color32(255, 190, 0, 255);
         CurrentHealth = MaxHealth;
         OL = GameObject.Find("GameManager").GetComponent<OutputLog>();
@@ -75,28 +77,9 @@ public class Enemy : MonoBehaviour
         maxGKeys = float.Parse(splitArrGKeys[1]);
     }
 
-    void Update()
+    public void UpdateVisuals()
     {
-        DisplayHealth = Mathf.Lerp(DisplayHealth, CurrentHealth, lerpTime * Time.deltaTime);
-        float calcHealthBar = CurrentHealth / MaxHealth;
-        HealthText.text = DisplayHealth.ToString("0") + "/" + MaxHealth.ToString("0");
-        HealthBar.fillAmount = Mathf.Lerp(HealthBar.fillAmount, calcHealthBar, lerpTime * Time.deltaTime);
-        if (CurrentHealth >= MaxHealth)
-        {
-            CurrentHealth = MaxHealth;
-        }
-        if (Recover)
-        {
-            if(CurrentHealth == MaxHealth)
-            {
-
-            }
-            else
-            {
-                CurrentHealth += Time.deltaTime;
-            }
-        }
-        if(Dead)
+        if (Dead)
         {
             HealthBackground.color = new Color32(90, 90, 90, 255);
             gameObject.GetComponent<Button>().interactable = false;
@@ -125,14 +108,41 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        float calcHealthBar = CurrentHealth / MaxHealth;
+        HealthText.text = DisplayHealth.ToString("0") + "/" + MaxHealth.ToString("0");
+        if (CurrentHealth >= MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
+        if (Recover)
+        {
+            if(CurrentHealth == MaxHealth)
+            {
+
+            }
+            else
+            {
+                DisplayHealth = Mathf.Lerp(DisplayHealth, CurrentHealth, elapsedTime / lerpTime);
+                HealthBar.fillAmount = Mathf.Lerp(HealthBar.fillAmount, calcHealthBar, elapsedTime / lerpTime);
+
+                elapsedTime += Time.deltaTime;
+                CurrentHealth += Time.deltaTime;
+            }
+        }
+    }
+
     public void Attack()
     {
+        elapsedTime = 0;
         if (!SilverLock && !GoldLock)
         {
             float PLAYER_ATTACK = Mathf.Round(PLR.CurrentAttack / 2);
             CurrentHealth -= PLAYER_ATTACK;
             OL.AddLog("<color=#FF00FF>Attack! - " + PLAYER_ATTACK + " damage to the enemy!</color>");
             PLR.AddCOMBO();
+            PLR.ResetTimer();
             float DEF_Multiplier = Mathf.Round(PLR.CurrentDefense / 2);
             float ENEMY_ATTACK = EnemyAttack - DEF_Multiplier;
             if(ENEMY_ATTACK < 0)
@@ -155,6 +165,7 @@ public class Enemy : MonoBehaviour
                 PLR.UpgradePoints++;
                 OL.AddLog("Mission completed! <color=#00FF00>+" + EXP_GAIN + " EXP</color>, <color=#FFFF00>+" + GOLD_GAIN + " $</color>, <color=#BEBEBE>+" + SKEYS_GAIN + " Silver Keys</color>, <color=#FFC300>+" + GKEYS_GAIN + " Golden Keys</color>, <color=#FF0000>+1 Upgrade Point</color>");
             }
+            UpdateVisuals();
         }
         if (SilverLock)
         {
@@ -163,6 +174,8 @@ public class Enemy : MonoBehaviour
                 SilverLock = false;
                 PLR.SilverKeys--;
                 OL.AddLog("Enemy Unlocked");
+                UpdateVisuals();
+
             }
             else
             {
@@ -176,6 +189,7 @@ public class Enemy : MonoBehaviour
                 GoldLock = false;
                 PLR.GoldenKeys--;
                 OL.AddLog("Enemy Unlocked");
+                UpdateVisuals();
             }
             else
             {

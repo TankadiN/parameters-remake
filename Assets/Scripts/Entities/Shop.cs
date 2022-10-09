@@ -42,9 +42,10 @@ public class Shop : MonoBehaviour
         {
             ShieldGameobject.SetActive(true);
         }
+        UpdateVisuals();
     }
 
-    void Update()
+    public void UpdateVisuals()
     {
         CostTextGameobject.text = "$" + Cost.ToString("0");
         if(ShopType == ShopList.Keys)
@@ -94,6 +95,8 @@ public class Shop : MonoBehaviour
                 BackgroundGameobject.color = new Color32(80, 255, 80, 255);
                 OL.AddLog("<color=#FF0080>Bought Armor > DEF. +" + Value + "</color>");
             }
+            UpdateVisuals();
+            PLR.ResetTimer();
         }
         else
         {

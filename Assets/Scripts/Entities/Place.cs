@@ -29,6 +29,7 @@ public class Place : MonoBehaviour
     [Header("Gold Completed")]
     public string GoldCompleted;
     [Header("Settings")]
+    public float elapsedTime;
     public float lerpTime;
 
     private float minExpOng, maxExpOng;
@@ -52,16 +53,13 @@ public class Place : MonoBehaviour
         string[] splitArrGoldComp = GoldCompleted.Split(char.Parse("/"));
         minGoldComp = float.Parse(splitArrGoldComp[0]);
         maxGoldComp = float.Parse(splitArrGoldComp[1]);
+
+        UpdateVisuals();
     }
 
-    void Update()
+    public void UpdateVisuals()
     {
-        float calcPercent = CurrentProgress * 100 / ProgressNeeded;
-        float calcBarPercent = CurrentProgress / ProgressNeeded;
-        DisplayPercent = Mathf.Lerp(DisplayPercent, calcPercent, lerpTime * Time.deltaTime);
-        PercentText.text = DisplayPercent.ToString("0") + "%";
-        ProgressBar.fillAmount = Mathf.Lerp(ProgressBar.fillAmount, calcBarPercent, lerpTime * Time.deltaTime);
-        if(CurrentProgress == ProgressNeeded)
+        if (CurrentProgress == ProgressNeeded)
         {
             ProgressBar.color = new Color32(140, 63, 0, 255);
         }
@@ -73,14 +71,29 @@ public class Place : MonoBehaviour
         {
             Lock.color = GoldColor;
         }
-        if(SilverLock == false && GoldLock == false)
+        if (SilverLock == false && GoldLock == false)
         {
             Lock.color = new Color32(255, 255, 255, 0);
         }
     }
 
+    void Update()
+    {
+        float calcPercent = CurrentProgress * 100 / ProgressNeeded;
+        float calcBarPercent = CurrentProgress / ProgressNeeded;
+        PercentText.text = DisplayPercent.ToString("0") + "%";
+        if (elapsedTime < lerpTime)
+        {
+            DisplayPercent = Mathf.Lerp(DisplayPercent, calcPercent, elapsedTime / lerpTime);
+            ProgressBar.fillAmount = Mathf.Lerp(ProgressBar.fillAmount, calcBarPercent, elapsedTime / lerpTime);
+
+            elapsedTime += Time.deltaTime;
+        }
+    }
+
     public void AddProgress()
     {
+        elapsedTime = 0;
         if (this.enabled)
         {
             if (!SilverLock && !GoldLock)
@@ -110,6 +123,8 @@ public class Place : MonoBehaviour
                     }
                     PLR.CurrentEnergy -= EnergyNeeded;
                     PLR.AddCOMBO();
+                    PLR.ResetTimer();
+                    UpdateVisuals();
                 }
                 else
                 {
@@ -123,6 +138,7 @@ public class Place : MonoBehaviour
                     SilverLock = false;
                     PLR.SilverKeys--;
                     OL.AddLog("Mission Unlocked");
+                    UpdateVisuals();
                 }
                 else
                 {
@@ -136,6 +152,7 @@ public class Place : MonoBehaviour
                     GoldLock = false;
                     PLR.GoldenKeys--;
                     OL.AddLog("Mission Unlocked");
+                    UpdateVisuals();
                 }
                 else
                 {

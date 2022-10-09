@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
     public float MaxDefense;
     public float CurrentDefense;
     [Header("Settings")]
+    public float elapsedTime;
     public float lerpTime;
     
     private float DisplayExperience;
@@ -94,16 +95,16 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        //Lerp Calculations
-        DisplayExperience = Mathf.Lerp(DisplayExperience, CurrentExperience, lerpTime * Time.deltaTime);
-        DisplayHealth = Mathf.Lerp(DisplayHealth, CurrentHealth, lerpTime * Time.deltaTime);
-        DisplayEnergy = Mathf.Lerp(DisplayEnergy, CurrentEnergy, lerpTime * Time.deltaTime);
-        DisplayComboTimer = Mathf.Lerp(DisplayComboTimer, CurrentComboTimer, lerpTime * Time.deltaTime);
+            //Lerp Calculations
+            //DisplayExperience = Mathf.Lerp(DisplayExperience, CurrentExperience, lerpTime * Time.deltaTime);
+        //DisplayHealth = Mathf.Lerp(DisplayHealth, CurrentHealth, lerpTime * Time.deltaTime);
+        //DisplayEnergy = Mathf.Lerp(DisplayEnergy, CurrentEnergy, lerpTime * Time.deltaTime);
+        //DisplayComboTimer = Mathf.Lerp(DisplayComboTimer, CurrentComboTimer, lerpTime * Time.deltaTime);
         DisplayRecovery = Mathf.Lerp(DisplayRecovery, CurrentRecovery, lerpTime * Time.deltaTime);
-        DisplayAttack = Mathf.Lerp(DisplayAttack, CurrentAttack, lerpTime * Time.deltaTime);
-        DisplayDefense = Mathf.Lerp(DisplayDefense, CurrentDefense, lerpTime * Time.deltaTime);
-        DisplayMoney = Mathf.Lerp(DisplayMoney, Money, lerpTime * Time.deltaTime);
-        //Calculate Values
+        //DisplayAttack = Mathf.Lerp(DisplayAttack, CurrentAttack, lerpTime * Time.deltaTime);
+        //DisplayDefense = Mathf.Lerp(DisplayDefense, CurrentDefense, lerpTime * Time.deltaTime);
+            //DisplayMoney = Mathf.Lerp(DisplayMoney, Money, lerpTime * Time.deltaTime);
+            //Calculate Values
         float calcEXP = CurrentExperience / NeededExperience;
         float calcHP = CurrentHealth / MaxHealth;
         float calcEN = CurrentEnergy / MaxEnergy;
@@ -111,17 +112,17 @@ public class Player : MonoBehaviour
         float calcRCV = CurrentRecovery / MaxRecovery;
         float calcATK = CurrentAttack / MaxAttack;
         float calcDEF = CurrentDefense / MaxDefense;
-        //Variables
+            //Variables
         float RCV_Multiplier = CurrentRecovery * RCVModifier;
-        //Set to bars
-        ExperienceImageGameobject.fillAmount = Mathf.Lerp(ExperienceImageGameobject.fillAmount, calcEXP, lerpTime * Time.deltaTime);
-        HealthImageGameobject.fillAmount = Mathf.Lerp(HealthImageGameobject.fillAmount, calcHP, lerpTime * Time.deltaTime);
-        EnergyImageGameobject.fillAmount = Mathf.Lerp(EnergyImageGameobject.fillAmount, calcEN, lerpTime * Time.deltaTime);
-        ComboImageGameobject.fillAmount = Mathf.Lerp(ComboImageGameobject.fillAmount, calcCOMBO, lerpTime * Time.deltaTime);
+            //Set to bars
+            //ExperienceImageGameobject.fillAmount = Mathf.Lerp(ExperienceImageGameobject.fillAmount, calcEXP, lerpTime * Time.deltaTime);
+        //HealthImageGameobject.fillAmount = Mathf.Lerp(HealthImageGameobject.fillAmount, calcHP, lerpTime * Time.deltaTime);
+        //EnergyImageGameobject.fillAmount = Mathf.Lerp(EnergyImageGameobject.fillAmount, calcEN, lerpTime * Time.deltaTime);
+        //ComboImageGameobject.fillAmount = Mathf.Lerp(ComboImageGameobject.fillAmount, calcCOMBO, lerpTime * Time.deltaTime);
         RecoveryImageGameobject.fillAmount = Mathf.Lerp(RecoveryImageGameobject.fillAmount, calcRCV, lerpTime * Time.deltaTime);
-        AttackImageGameobject.fillAmount = Mathf.Lerp(AttackImageGameobject.fillAmount, calcATK, lerpTime * Time.deltaTime);
-        DefenseImageGameobject.fillAmount = Mathf.Lerp(DefenseImageGameobject.fillAmount, calcDEF, lerpTime * Time.deltaTime);
-        //Set to texts
+        //AttackImageGameobject.fillAmount = Mathf.Lerp(AttackImageGameobject.fillAmount, calcATK, lerpTime * Time.deltaTime);
+        //DefenseImageGameobject.fillAmount = Mathf.Lerp(DefenseImageGameobject.fillAmount, calcDEF, lerpTime * Time.deltaTime);
+            //Set to texts
         LevelTextGameobject.text = "Level " + Level.ToString("0");
         ExperienceTextGameobject.text = DisplayExperience.ToString("0") + "/" + NeededExperience.ToString("0");
         HealthTextGameobject.text = DisplayHealth.ToString("0") + "/" + MaxHealth.ToString("0");
@@ -134,26 +135,49 @@ public class Player : MonoBehaviour
         SKeysTextGameobject.text = SilverKeys.ToString("0");
         GKeysTextGameobject.text = GoldenKeys.ToString("0");
         UPointsTextGameobject.text = "+" + UpgradePoints.ToString("0");
-        //Time Related code
-        if(CurrentEnergy <= MaxEnergy)
+            //Time Related code
+        if (elapsedTime < lerpTime)
+        {
+            elapsedTime += Time.deltaTime;
+
+            DisplayExperience = Mathf.Lerp(DisplayExperience, CurrentExperience, elapsedTime / lerpTime);
+            DisplayMoney = Mathf.Lerp(DisplayMoney, Money, elapsedTime / lerpTime);
+
+            ExperienceImageGameobject.fillAmount = Mathf.Lerp(ExperienceImageGameobject.fillAmount, calcEXP, elapsedTime / lerpTime);
+        }
+        if (CurrentEnergy <= MaxEnergy)
         {
             CurrentEnergy += Time.deltaTime * RCV_Multiplier;
+
+            EnergyImageGameobject.fillAmount = Mathf.Lerp(EnergyImageGameobject.fillAmount, calcEN, lerpTime * Time.deltaTime);
+            DisplayEnergy = Mathf.Lerp(DisplayEnergy, CurrentEnergy, lerpTime * Time.deltaTime);
         }
         if(CurrentHealth <= MaxHealth)
         {
             CurrentHealth += Time.deltaTime * RCV_Multiplier;
+
+            HealthImageGameobject.fillAmount = Mathf.Lerp(HealthImageGameobject.fillAmount, calcHP, lerpTime * Time.deltaTime);
+            DisplayHealth = Mathf.Lerp(DisplayHealth, CurrentHealth, lerpTime * Time.deltaTime);
         }
         if (CurrentAttack <= MaxAttack)
         {
             CurrentAttack += Time.deltaTime * RCV_Multiplier;
+
+            AttackImageGameobject.fillAmount = Mathf.Lerp(AttackImageGameobject.fillAmount, calcATK, lerpTime * Time.deltaTime);
+            DisplayAttack = Mathf.Lerp(DisplayAttack, CurrentAttack, lerpTime * Time.deltaTime);
         }
         if (CurrentDefense <= MaxDefense)
         {
             CurrentDefense += Time.deltaTime * RCV_Multiplier;
+
+            DefenseImageGameobject.fillAmount = Mathf.Lerp(DefenseImageGameobject.fillAmount, calcDEF, lerpTime * Time.deltaTime);
+            DisplayDefense = Mathf.Lerp(DisplayDefense, CurrentDefense, lerpTime * Time.deltaTime);
         }
         if(CurrentComboTimer >= 0)
         {
             CurrentComboTimer -= Time.deltaTime;
+
+            ComboImageGameobject.fillAmount = Mathf.Lerp(ComboImageGameobject.fillAmount, calcCOMBO, lerpTime * Time.deltaTime);
         }
         //Overflow restoring
         if (CurrentEnergy > MaxEnergy)
@@ -211,6 +235,11 @@ public class Player : MonoBehaviour
                 UpgradeButtons[i].interactable = true;
             }
         }
+    }
+
+    public void ResetTimer()
+    {
+        elapsedTime = 0;
     }
 
     public void AddRCV()
