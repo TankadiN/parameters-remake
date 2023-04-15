@@ -80,7 +80,7 @@ public class Options : MonoBehaviour
     public void SwitchDiscordPresence(bool toggle)
     {
         DiscordController.instance.discordRP = toggle;
-        //DiscordController.instance.UpdatePresence();
+        DiscordController.instance.SwitchPresence();
     }
 
     private void Update()

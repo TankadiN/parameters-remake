@@ -8,8 +8,6 @@ public class DiscordUserInfo : MonoBehaviour
 {
     public Toggle userToggle;
 
-    public RawImage avatarImage;
-
     public Sprite initialized;
     public Sprite deinitialized;
 
@@ -19,20 +17,19 @@ public class DiscordUserInfo : MonoBehaviour
 
     private void Update()
     {
-        //discordStatus.sprite = DiscordManager.current.isInitialized ? initialized : deinitialized;
+        discordStatus.sprite = DiscordController.instance.initialized ? initialized : deinitialized;
     }
 
     public void UpdateText()
     {
-        /*avatarImage.texture = userToggle.isOn ? null : DiscordManager.current.CurrentUser.avatar;
-        if (DiscordManager.current.isInitialized)
+        if (DiscordController.instance.initialized)
         {
-            username.text = userToggle.isOn ? "[HIDDEN]#0000" : DiscordManager.current.CurrentUser.username + DiscordManager.current.CurrentUser.discrim;
+            username.text = userToggle.isOn ? "[HIDDEN]#0000" : DiscordController.instance.username +"#"+ DiscordController.instance.discriminator;
         }
         else
         {
             username.text = userToggle.isOn ? "[HIDDEN]#0000" : "null";
         }
-        userID.text = userToggle.isOn ? "ID: [HIDDEN]" : "ID: " + DiscordManager.current.CurrentUser.ID.ToString();*/
+        userID.text = userToggle.isOn ? "ID: [HIDDEN]" : "ID: " + DiscordController.instance.id;
     }
 }

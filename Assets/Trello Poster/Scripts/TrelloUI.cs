@@ -119,23 +119,22 @@ public class TrelloUI : MonoBehaviour
 
     public void GetUser()
     {
-        //avatarImage.texture = DiscordManager.current.CurrentUser.avatar;
-        //usernameText.text = DiscordManager.current.CurrentUser.username + DiscordManager.current.CurrentUser.discrim;
+        usernameText.text = DiscordController.instance.username + "#" + DiscordController.instance.discriminator;
     }
 
     public void UseDiscordUsername()
     {
-        /*if (DiscordManager.current.CurrentUser != null)
+        if (DiscordController.instance.initialized)
         {
             GetUser();
             playerName.gameObject.SetActive(useDiscord.isOn ? false : true);
-            playerName.text = useDiscord.isOn ? DiscordManager.current.CurrentUser.username + DiscordManager.current.CurrentUser.discrim + " [Discord]" : "";
+            playerName.text = useDiscord.isOn ? DiscordController.instance.username + "#" + DiscordController.instance.discriminator + " [Discord]" : "";
         }
         else
         {
             Debug.LogError("You aren't logged in on Discord!");
             useDiscord.isOn = false;
-        }*/
+        }
     }
 
     public void ResetUI()
