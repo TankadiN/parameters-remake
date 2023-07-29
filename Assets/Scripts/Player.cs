@@ -78,10 +78,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         OL = GetComponent<OutputLog>();
-        if(AudioManager.instance)
+
+        if (AudioManager.instance)
         {
             AudioManager.instance.StopAll();
-            AudioManager.instance.Play("LevelTheme");
         }
 
         ExperienceImageGameobject.fillAmount = 0;
@@ -91,6 +91,14 @@ public class Player : MonoBehaviour
         RecoveryImageGameobject.fillAmount = 0;
         AttackImageGameobject.fillAmount = 0;
         DefenseImageGameobject.fillAmount = 0;
+    }
+
+    public void PlayInGameAudio()
+    {
+        if (AudioManager.instance)
+        {
+            AudioManager.instance.Play("LevelTheme");
+        }
     }
 
     void Update()

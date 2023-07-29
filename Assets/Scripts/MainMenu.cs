@@ -62,7 +62,7 @@ public class MainMenu : MonoBehaviour
             if (DiscordController.instance.initialized && DiscordController.instance.id == "151701569543340032")
             {
                 Dev.SetActive(true);
-                username.text = DiscordController.instance.username +"#"+ DiscordController.instance.discriminator + " <color=red>[Dev]</color>";
+                username.text = DiscordController.instance.username + " <color=red>[Dev]</color>";
             }
         }
     }

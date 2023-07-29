@@ -9,6 +9,7 @@ using GameJolt.API.Internal;
 using GameJolt.API.Objects;
 using GameJolt.External;
 using UnityEngine.Networking;
+using System.IO;
 
 namespace GameJolt.API {
 	/// <summary>
@@ -65,7 +66,7 @@ namespace GameJolt.API {
 		/// </summary>
 		protected override void Init() {
 			Configure();
-			AutoConnect();
+			StartCoroutine(AutoConnect());
 			CacheTables();
 		}
 
@@ -95,17 +96,18 @@ namespace GameJolt.API {
 			}
 
 			float timeout = Time.time + Settings.Timeout;
-			var request = UnityVersionAbstraction.GetRequest(url, format);
-			request.SendWebRequest();
-			while(!request.isDone) {
-				if(Time.time > timeout) {
-					request.Abort();
-					callback(new Response("Timeout for " + url));
-					yield break;
+			using(var request = UnityVersionAbstraction.GetRequest(url, format)) {
+				request.SendWebRequest();
+				while(!request.isDone) {
+					if(Time.time > timeout) {
+						request.Abort();
+						callback(new Response("Timeout for " + url));
+						yield break;
+					}
+					yield return new WaitForEndOfFrame();
 				}
-				yield return new WaitForEndOfFrame();
+				callback(new Response(request, format));
 			}
-			callback(new Response(request, format));
 		}
 
 		public IEnumerator PostRequest(string url, Dictionary<string, string> payload, ResponseFormat format,
@@ -117,23 +119,25 @@ namespace GameJolt.API {
 
 			float timeout = Time.time + Settings.Timeout;
 
-			var request = UnityWebRequest.Post(url, payload);
-			request.SendWebRequest();
-			while(!request.isDone) {
-				if(Time.time > timeout) {
-					request.Abort();
-					callback(new Response("Timeout for " + url));
-					yield break;
+			using(var request = UnityWebRequest.Post(url, payload)) {
+				request.SendWebRequest();
+				while(!request.isDone) {
+					if(Time.time > timeout) {
+						request.Abort();
+						callback(new Response("Timeout for " + url));
+						yield break;
+					}
+					yield return new WaitForEndOfFrame();
 				}
-				yield return new WaitForEndOfFrame();
-			}
 
-			callback(new Response(request, format));
+				callback(new Response(request, format));
+			}
 		}
 		#endregion Requests
 
 		#region Actions
-		private void AutoConnect() {
+		private IEnumerator AutoConnect() {
+			yield return null; // delay by one frame to make sure that the whole UI is already initialized
 #if UNITY_WEBGL
 			#region Autoconnect Web
 #if UNITY_EDITOR
@@ -161,6 +165,20 @@ namespace GameJolt.API {
 #else
 
 			#region Autoconnect Non Web
+			// if started via the GameJolt app, then the credentials are placed next to our game
+			foreach(var path in new string[] { ".gj-credentials", "../.gj-credentials", "../../.gj-credentials" }) {
+				try {
+					if(File.Exists(path)) {
+						var lines = File.ReadAllLines(path);
+						// file content: version \n username \n token
+						var user = new User(lines[1], lines[2]);
+						user.SignIn(success => AutoLoginEvent.Invoke(success ? AutoLoginResult.Success : AutoLoginResult.Failed));
+						yield break;
+					}
+				} catch(Exception ex) {
+					Debug.LogException(ex);
+				}
+			}
 			string username, token;
 			if(GetStoredUserCredentials(out username, out token)) {
 				var user = new User(username, token);

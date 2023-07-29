@@ -1,7 +1,7 @@
 ﻿using GameJolt.API.Objects;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 namespace GameJolt.UI.Controllers {
 	public class TableButton : MonoBehaviour {

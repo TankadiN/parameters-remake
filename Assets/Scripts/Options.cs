@@ -37,7 +37,7 @@ public class Options : MonoBehaviour
         int currentResolutionIndex = 0;
         for (int i = 0; i < resolutions.Length; i++)
         {
-            string option = resolutions[i].width + "x" + resolutions[i].height + " @" + resolutions[i].refreshRate;
+            string option = resolutions[i].width + "x" + resolutions[i].height + " @" + resolutions[i].refreshRateRatio;
             options.Add(option);
 
             if (resolutions[i].width == Screen.width &&
@@ -74,7 +74,7 @@ public class Options : MonoBehaviour
 
     string ResToString(Resolution res)
     {
-        return res.width + " x " + res.height + " @" + res.refreshRate;
+        return res.width + " x " + res.height + " @" + res.refreshRateRatio;
     }
 
     public void SwitchDiscordPresence(bool toggle)

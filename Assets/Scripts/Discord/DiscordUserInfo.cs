@@ -24,7 +24,14 @@ public class DiscordUserInfo : MonoBehaviour
     {
         if (DiscordController.instance.initialized)
         {
-            username.text = userToggle.isOn ? "[HIDDEN]#0000" : DiscordController.instance.username +"#"+ DiscordController.instance.discriminator;
+            if(DiscordController.instance.discriminator == "0")
+            {
+                username.text = userToggle.isOn ? "[HIDDEN]#0000" : DiscordController.instance.username;
+            }
+            else
+            {
+                username.text = userToggle.isOn ? "[HIDDEN]#0000" : DiscordController.instance.username +"#"+ DiscordController.instance.discriminator;
+            }
         }
         else
         {

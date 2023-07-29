@@ -60,6 +60,6 @@ public class LevelID : MonoBehaviour
             GlobalData.GD.minutes = Minutes;
             GlobalData.GD.seconds = Seconds;
         }
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }

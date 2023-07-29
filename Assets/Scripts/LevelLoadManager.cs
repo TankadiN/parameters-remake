@@ -15,16 +15,18 @@ public class LevelLoadManager : MonoBehaviour
 
     private LevelData Level;
     private OutputLog OL;
+    private Player PLR;
 
     void Start()
     {
         LoadPanel.SetActive(true);
         Level = GetComponent<LevelData>();
         OL = GameObject.Find("GameManager").GetComponent<OutputLog>();
-        LoadGame();
+        PLR = GameObject.Find("GameManager").GetComponent<Player>();
+        StartCoroutine(LoadGame());
     }
 
-    public void LoadGame()
+    public IEnumerator LoadGame()
     {
         //Level.ExecuteLoad(GlobalData.GD.levelString);
         Level.ExecuteLoadString(GlobalData.GD.levelFile_String);
@@ -132,7 +134,9 @@ public class LevelLoadManager : MonoBehaviour
 
                 Debug.Log("Treasure Loaded");
             }
+            yield return new WaitForSeconds(0.05f);
         }
+        //StartCoroutine(LoadAnim());
         GoalChecker.GC.GetPlaces();
         if (GameObject.Find("GameManager").GetComponent<Timer>().Active)
         {
@@ -140,5 +144,6 @@ public class LevelLoadManager : MonoBehaviour
         }
         OL.Disable = false;
         LoadPanel.SetActive(false);
+        PLR.PlayInGameAudio();
     }
 }
